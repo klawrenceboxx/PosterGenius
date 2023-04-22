@@ -1,0 +1,124 @@
+1. delete all the unnecessary files - App.test.js. logo.svg, setupTests.js
+
+2. delete all the styling in App.css, remove margin in the index.css
+
+3. rename className="App" to "app" to use a bem convention
+
+4. create a markdown. basically plan out in the App.js file all the components we
+are going to be adding into this file in the future. 
+
+5. create a components folder and create a folder for each component.
+
+6. create a header component and go rfce
+
+.header {
+  display: flex;
+  flex-direction: row;
+  position: sticky;
+  background-color: #ffffff;
+  padding: 0;
+  gap: 16px;
+  text-align: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.header_logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #000;
+  width: 263px;
+  height: 48px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.header_logoImage {
+  height: 48px;
+  width: 48px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.header_logoText {
+  width: 199px;
+  height: 44px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 29px;
+  line-height: 44px;
+  display: flex;
+  align-items: center;
+  color: #150826;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.header_navOne {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 16px;
+  width: 248px;
+  height: 24px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.header_optionOne {
+  width: 64px;
+  height: 24px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #150826;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.header_optionTwo {
+  width: 96px;
+  height: 24px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #150826;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.header_optionThree {
+  width: 56px;
+  height: 24px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  text-decoration-line: underline;
+  color: #712bcc;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
