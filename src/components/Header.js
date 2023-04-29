@@ -1,11 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import "./Header.css";
 import Logo from "../images/PosterGeniusV2.png"; //the ../ is to go back one folder
 import Heart from "../images/Heart.png";
 import Cart from "../images/Cart.png";
 import "../fonts/Poppins-Regular.ttf";
 
-//rfce
+//rfce, BEM convention
 
 function Header() {
   return (
@@ -14,13 +16,21 @@ function Header() {
         {/* Header Navigation section ONE */}
         <div className="header__nav header__nav-one">
           {/* Logo icon and Title */}
-          <div className="header__logo">
-            <img className="header__logo-image" src={Logo} alt="PosterGenius" />
-            <span className="header__logo-text">PosterGenius</span>
-          </div>
+          <Link to="/">
+            <div className="header__logo">
+              <img
+                className="header__logo-image"
+                src={Logo}
+                alt="PosterGenius"
+              />
+              <span className="header__logo-text">PosterGenius</span>
+            </div>
+          </Link>
           {/* Header Options */}
           <div className="header__option">
-            <span className="header__option-one">Posters</span>
+            <Link to="/posters">
+              <span className="header__option-one">Posters</span>
+            </Link>
             <span className="header__option-two">Collections</span>
             <span className="header__option-three">Deals</span>
           </div>
