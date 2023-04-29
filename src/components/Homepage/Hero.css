@@ -1,0 +1,211 @@
+.hero__area {
+  position: absolute;
+  width: 1440px;
+  height: 700px;
+  left: 0px;
+  top: 80px;
+  /* border: 1px solid #000; */
+}
+
+.hero__featured {
+  position: absolute;
+  width: 480px;
+  height: 424px;
+  left: 136px;
+  top: 112px;
+  /* border: 1px solid #000; */
+}
+
+.hero__featured-header {
+  position: absolute;
+  width: 480px;
+  height: 238.87px;
+  left: 0px;
+  top: 0px;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 68px;
+  line-height: 80px;
+  letter-spacing: -0.015em;
+  color: #150826;
+}
+
+.hero__featured-text {
+  position: absolute;
+  width: 428.25px;
+  height: 49.77px;
+  left: 0px;
+  bottom: 128px;
+  font-family: "RobotoFlex", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 25px;
+  color: rgba(21, 8, 38, 0.75);
+}
+
+.hero__featured-button {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 24px 48px;
+  gap: 10px;
+  position: absolute;
+  width: 268.92px;
+  height: 71.66px;
+  left: 0px;
+  bottom: 0px;
+  background: linear-gradient(90deg, #b882ff 0%, #8e35ff 100%);
+  box-shadow: 3px 5px 15px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+  border: 0px solid #000;
+}
+
+.hero__featured-button-text {
+  height: 24px;
+  left: 25px;
+  right: 24px;
+  top: calc(50% - 24px / 2);
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #ffffff;
+}
+
+.hero__featured-gallery {
+  position: absolute;
+  width: 732px;
+  height: 424px;
+  left: 628px;
+  top: 168px;
+  /* border: 1px solid #000; */
+}
+
+.hero__featured-poster1 {
+  position: absolute;
+  width: 234px;
+  height: 312px;
+  left: 0px;
+  top: 0px;
+  background: url("../../images/Miles_Morales.png");
+  border-radius: 3px;
+  z-index: 2;
+}
+.hero__featured-poster2 {
+  position: absolute;
+  bottom: 0;
+  left: 226px;
+  background: url("../../images/Tony_Stark.png");
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  border-radius: 3px;
+  z-index: 3;
+}
+.hero__featured-poster3 {
+  position: absolute;
+  width: 234px;
+  height: 312px;
+  right: 0;
+  top: 0;
+  background: url("../../images/Kang.png");
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  border-radius: 3px;
+  z-index: 2;
+}
+
+.hero__featured-rectangle1 {
+  box-sizing: border-box;
+  position: absolute;
+  width: 634px;
+  height: 317px;
+  left: 53px;
+  top: 16px;
+  background: linear-gradient(90deg, #b882ff 0%, #8e35ff 100%);
+  z-index: 1;
+}
+
+.hero__featured-rectangle2 {
+  box-sizing: border-box;
+  position: absolute;
+  width: 634px;
+  height: 312px;
+  left: 34px;
+  top: 40px;
+  background: #150826;
+  z-index: 0;
+}
+
+.hero__circle1 {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  left: 54px;
+  top: 96px;
+  background: #b882ff;
+  border-radius: 100%;
+}
+
+.hero__circle2 {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  left: 313px;
+  top: 34px;
+  border-radius: 100%;
+  background: #712bcc;
+}
+
+.hero__circle3 {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  left: 472px;
+  top: 555px;
+  border-radius: 100%;
+  background: #8e35ff;
+}
+
+.hero__circle4 {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  left: 853px;
+  top: 94px;
+  border-radius: 100%;
+  background: #8e35ff;
+}
+
+.hero__circle5 {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  left: 1092px;
+  top: 50px;
+  border-radius: 100%;
+  background: #b882ff;
+}
+
+.hero__circle6 {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  left: 1204px;
+  top: 595px;
+  border-radius: 100%;
+  background: #712bcc;
+}
+
+.Hero_Circle7 {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  left: 1306px;
+  top: 550px;
+  border-radius: 100%;
+  background: #8e35ff;
+}

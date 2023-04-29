@@ -11,29 +11,38 @@ function Header() {
   return (
     <>
       <div className="header">
-        <div className="header_nav header_navOne">
-          <div className="header_logo">
-            <img className="header_logoImage" src={Logo} alt="PosterGenius" />
-            <span className="header_logoText">PosterGenius</span>
+        {/* Header Navigation section ONE */}
+        <div className="header__nav header__nav-one">
+          {/* Logo icon and Title */}
+          <div className="header__logo">
+            <img className="header__logo-image" src={Logo} alt="PosterGenius" />
+            <span className="header__logo-text">PosterGenius</span>
           </div>
-          <div className="header_option">
-            <span className="header_optionOne">Posters</span>
-            <span className="header_optionTwo">Collections</span>
-            <span className="header_optionThree">Deals</span>
+          {/* Header Options */}
+          <div className="header__option">
+            <span className="header__option-one">Posters</span>
+            <span className="header__option-two">Collections</span>
+            <span className="header__option-three">Deals</span>
           </div>
         </div>
-        <div className="header_search">
-          <input type="text" className="header_searchInput" />
+
+        {/* Header Navigation section TWO */}
+        <div className="header__search">
+          <input type="text" className="header__search-input" />
         </div>
-        <div className="header_nav header_navTwo">
-          <button className="header_optionButton">
-            <span class="header_optionButton-text">Sign In</span>
+
+        {/* Header Navigation section THREE */}
+        <div className="header__nav header__nav-two">
+          <button className="header__option-button">
+            <span class="header__option-button-text">Sign In</span>
           </button>
-          <img className="header_logoCart" src={Cart} alt="PosterGenius" />
-          <img className="header_logoHeart" src={Heart} alt="PosterGenius" />
+          <img className="header__logo-cart" src={Cart} alt="PosterGenius" />
+          <img className="header__logo-heart" src={Heart} alt="PosterGenius" />
         </div>
       </div>
-      <hr className="header_divider" />
+
+      {/* Header Divider */}
+      <hr className="header__divider" />
     </>
   );
 }

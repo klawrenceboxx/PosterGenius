@@ -10,10 +10,12 @@
   height: 80px;
   right: 0px;
   top: 0px;
+  z-index: 100;
+  background-color: #fff;
 }
 
 /* Frame 7 */
-.header_navOne {
+.header__nav-one {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -28,7 +30,7 @@
 }
 
 /* Frame 5 */
-.header_logo {
+.header__logo {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -42,7 +44,7 @@
 }
 
 /* PosterGenius V2 1 */
-.header_logoImage {
+.header__logo-image {
   width: 48px;
   height: 48px;
   flex: none;
@@ -51,7 +53,7 @@
 }
 
 /* PosterGenius */
-.header_logoText {
+.header__logo-text {
   width: 199px;
   height: 44px;
   font-family: "Poppins", sans-serif;
@@ -69,7 +71,7 @@
 }
 
 /* Frame 1 */
-.header_option {
+.header__option {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -83,7 +85,7 @@
 }
 
 /* Link */
-.header_optionOne {
+.header__option-one {
   width: 64px;
   height: 24px;
   font-family: "Poppins", sans-serif;
@@ -101,7 +103,7 @@
 }
 
 /* Link */
-.header_optionTwo {
+.header__option-two {
   width: 96px;
   height: 24px;
   font-family: "Poppins", sans-serif;
@@ -117,7 +119,7 @@
   order: 1;
 }
 
-.header_optionThree {
+.header__option-three {
   width: 56px;
   height: 24px;
   font-family: "Poppins", sans-serif;
@@ -134,12 +136,12 @@
   flex-grow: 0;
 }
 
-.header_search {
+.header__search {
   width: 100%;
   display: flex;
 }
 
-.header_searchInput {
+.header__search-input {
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
@@ -159,7 +161,7 @@
   background-size: 24px 24px;
 }
 
-.header_navTwo {
+.header__nav-two {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -173,7 +175,7 @@
   flex-grow: 0;
 }
 
-.header_optionButton {
+.header__option-button {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -190,7 +192,7 @@
   flex-grow: 0;
 }
 
-.header_optionButton-text {
+.header__option-button-text {
   height: 24px;
   left: 25px;
   right: 24px;
@@ -206,7 +208,7 @@
   color: #ffffff;
 }
 
-.header_divider {
+.header__divider {
   position: absolute;
   width: 1440px;
   height: 1px;
@@ -215,7 +217,7 @@
   background: #d9d9d9;
 }
 
-.header_logoCart {
+.header__logo-cart {
   width: 30px;
   height: 30px;
   flex: none;
@@ -223,7 +225,7 @@
   flex-grow: 0;
 }
 
-.header_logoHeart {
+.header__logo-heart {
   width: 30px;
   height: 26.48px;
   flex: none;
@@ -231,8 +233,8 @@
   flex-grow: 0;
 }
 
-.header_divider {
-  position: relative;
+.header__divider {
+  position: fixed;
   width: 100%;
   height: 1px;
   top: 80px; /* adjust this value to position the line correctly */
