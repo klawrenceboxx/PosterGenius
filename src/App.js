@@ -8,6 +8,7 @@ import Popular from "./components/Homepage/Popular";
 import Promotion from "./components/Homepage/Promotion";
 import Footer from "./components/Footer";
 import Posters from "./components/Posters";
+import Checkout from "./components/Checkout";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           }
         />
         <Route path="/posters" element={<Posters />} />
+        <Route path="/checkout" element={<Checkout />} />
       </Routes>
     </Router>
   );

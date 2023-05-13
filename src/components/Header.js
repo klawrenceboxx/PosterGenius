@@ -46,7 +46,9 @@ function Header() {
           <button className="header__option-button">
             <span class="header__option-button-text">Sign In</span>
           </button>
-          <img className="header__logo-cart" src={Cart} alt="PosterGenius" />
+          <Link to="/checkout">
+            <img className="header__logo-cart" src={Cart} alt="PosterGenius" />
+          </Link>
           <img className="header__logo-heart" src={Heart} alt="PosterGenius" />
         </div>
       </div>
