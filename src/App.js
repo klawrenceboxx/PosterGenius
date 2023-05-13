@@ -9,6 +9,7 @@ import Promotion from "./components/Homepage/Promotion";
 import Footer from "./components/Footer";
 import Posters from "./components/Posters";
 import Checkout from "./components/Checkout";
+import Payment from "./components/Payment";
 
 function App() {
   return (
@@ -30,9 +31,12 @@ function App() {
         />
         <Route path="/posters" element={<Posters />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/payment" element={<Payment />} />
       </Routes>
     </Router>
   );
 }
 
 export default App;
+
+//ctrl + enter to pull up copilot
