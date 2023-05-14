@@ -1,16 +1,16 @@
 //import react and usestate
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import "./Payment.css";
-import { useStateValue } from "./StateProvider";
+import {useStateValue} from "./StateProvider";
 import CheckoutProduct from "./CheckoutProduct";
-import { Link, useNavigate, useRouteMatch } from "react-router-dom";
-import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import {Link, useNavigate, useRouteMatch} from "react-router-dom";
+import {CardElement, useElements, useStripe} from "@stripe/react-stripe-js";
 import CurrencyFormat from "react-currency-format";
-import { getBasketTotal } from "./reducer";
+import {getBasketTotal} from "./reducer";
 import axios from "./axios";
 
 function Payment() {
-  const [{ basket }, dispatch] = useStateValue();
+  const [{basket}, dispatch] = useStateValue();
 
   const stripe = useStripe();
   const elements = useElements();
@@ -38,6 +38,8 @@ function Payment() {
     getClientSecret();
   }, [basket]);
 
+  console.log("THE SECRET IS >>>", clientSecret);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setProcessing(true);
@@ -48,7 +50,7 @@ function Payment() {
           card: elements.getElement(CardElement),
         },
       })
-      .then(({ paymentIntent }) => {
+      .then(({paymentIntent}) => {
         // paymentIntent = payment confirmation
         setSucceeded(true);
         setError(null);
@@ -131,3 +133,5 @@ function Payment() {
 }
 
 export default Payment;
+
+//6:40:26
