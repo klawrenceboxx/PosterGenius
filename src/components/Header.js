@@ -48,13 +48,8 @@ function Header() {
             placeholder="Search"
           />
         </div>
-        {/* Mobile Menu */}
-        <div className="header__mobile-menu">
-          <Link to="/posters">Posters</Link>
-          <Link to="/collections">Collections</Link>
-          <Link to="/deals">Deals</Link>
-        </div>
-        ){/* Header Navigation section THREE */}
+
+        {/* Header Navigation section THREE */}
         <div className="header__nav header__nav-two">
           <button className="header__option-button">
             <span className="header__option-button-text">Sign In</span>
