@@ -19,7 +19,7 @@ import watch from "../images_posters/watch.png";
 
 function Posters() {
   return (
-    <div>
+    <div className="posters__page">
       <div className="posters__quote">
         <div className="posters__hero">
           <span className="posters__hero-header">All Posters & Wall Art</span>
@@ -28,7 +28,7 @@ function Posters() {
             elaborate infographics to breathtaking scenery
           </span>
           <p className="posters__hero-texttwo">
-            Take the world with you wherever you go. Give your friend the worl
+            Take the world with you wherever you go. Give your friend the worl+
             with out ner world feature poster
           </p>
         </div>
@@ -40,6 +40,7 @@ function Posters() {
           />
         </div>
       </div>
+
       <div className="poster__gallery">
         <Product title="Mind of Gears" price={36.7} image={Gears} />
         <Product title="Eagle" price={36.7} image={eagle} />

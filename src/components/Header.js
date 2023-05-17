@@ -1,6 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { useStateValue } from "./StateProvider";
+import React, {useEffect, useState} from "react";
+import {Link} from "react-router-dom";
+import {useStateValue} from "./StateProvider";
 
 import "./Header.css";
 import Logo from "../images/PosterGeniusV2.png"; //the ../ is to go back one folder
@@ -11,13 +11,15 @@ import "../fonts/Poppins-Regular.ttf";
 //rfce, BEM convention
 
 function Header() {
-  const [{ basket }, dispatch] = useStateValue(); //useState is a hook, the [] is the initial value
+  const [{basket}, dispatch] = useStateValue(); //useState is a hook, the [] is the initial value
+
   return (
     <>
       <div className="header">
         {/* Header Navigation section ONE */}
         <div className="header__nav header__nav-one">
           {/* Logo icon and Title */}
+
           <Link to="/">
             <div className="header__logo">
               <img
@@ -28,6 +30,7 @@ function Header() {
               <span className="header__logo-text">PosterGenius</span>
             </div>
           </Link>
+
           {/* Header Options */}
           <div className="header__option">
             <Link to="/posters">
@@ -37,13 +40,21 @@ function Header() {
             <span className="header__option-three">Deals</span>
           </div>
         </div>
-
         {/* Header Navigation section TWO */}
         <div className="header__search">
-          <input type="text" className="header__search-input" />
+          <input
+            type="text"
+            className="header__search-input"
+            placeholder="Search"
+          />
         </div>
-
-        {/* Header Navigation section THREE */}
+        {/* Mobile Menu */}
+        <div className="header__mobile-menu">
+          <Link to="/posters">Posters</Link>
+          <Link to="/collections">Collections</Link>
+          <Link to="/deals">Deals</Link>
+        </div>
+        ){/* Header Navigation section THREE */}
         <div className="header__nav header__nav-two">
           <button className="header__option-button">
             <span className="header__option-button-text">Sign In</span>
