@@ -422,3 +422,4 @@ Issues? Report them at https://github.com/firebase/firebase-tools/issues and att
 [debug] [2023-05-14T19:17:13.104Z] shutdown requested via /__/quitquitquit
 
 [info] +  functions: Loaded functions definitions from source: api. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: api."}}
+[debug] [2023-05-14T19:20:49.697Z] Received signal SIGHUP 1
