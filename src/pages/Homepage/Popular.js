@@ -1,9 +1,9 @@
 import React from "react";
-import Goku from "../../images/Goku.png";
-import Landscape from "../../images/Landscape.png";
+import Goku from "../../DesignAssets/images/Goku.png";
+import Landscape from "../../DesignAssets/images/Landscape.png";
 import "./Popular.css";
-import "../../fonts/Poppins-Regular.ttf";
-import "../../fonts/RobotoFlex-Regular.ttf";
+import "../../DesignAssets/fonts/Poppins-Regular.ttf";
+import "../../DesignAssets/fonts/RobotoFlex-Regular.ttf";
 
 function Popular() {
   return (

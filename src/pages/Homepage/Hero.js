@@ -1,10 +1,10 @@
 import React from "react";
-import Miles from "../../images/Miles_Morales.png";
-import Tony from "../../images/Tony_Stark.png";
-import Kang from "../../images/Kang.png";
+import Miles from "../../DesignAssets/images/Miles_Morales.png";
+import Tony from "../../DesignAssets/images/Tony_Stark.png";
+import Kang from "../../DesignAssets/images/Kang.png";
 import "./Hero.css";
-import "../../fonts/Poppins-Regular.ttf";
-import "../../fonts/RobotoFlex-Regular.ttf";
+import "../../DesignAssets/fonts/Poppins-Regular.ttf";
+import "../../DesignAssets/fonts/RobotoFlex-Regular.ttf";
 
 function Hero() {
   return (

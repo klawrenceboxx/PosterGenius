@@ -1,13 +1,13 @@
 //import react and usestate
 import React, {useEffect, useState} from "react";
 import "./Payment.css";
-import {useStateValue} from "./StateProvider";
-import CheckoutProduct from "./CheckoutProduct";
+import {useStateValue} from "../../components/StateProvider";
+import CheckoutProduct from "../../components/CheckoutProduct/CheckoutProduct";
 import {Link, useNavigate, useRouteMatch} from "react-router-dom";
 import {CardElement, useElements, useStripe} from "@stripe/react-stripe-js";
 import CurrencyFormat from "react-currency-format";
-import {getBasketTotal} from "./reducer";
-import axios from "./axios";
+import {getBasketTotal} from "../../components/reducer";
+import axios from "../../components/axios";
 
 function Payment() {
   const [{basket}, dispatch] = useStateValue();

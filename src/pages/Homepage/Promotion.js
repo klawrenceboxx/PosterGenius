@@ -1,8 +1,8 @@
 import React from "react";
-import Kang2 from "../../images/Kang2.png";
+import Kang2 from "../../DesignAssets/images/Kang2.png";
 import "./Promotion.css";
-import "../../fonts/Poppins-Regular.ttf";
-import "../../fonts/RobotoFlex-Regular.ttf";
+import "../../DesignAssets/fonts/Poppins-Regular.ttf";
+import "../../DesignAssets/fonts/RobotoFlex-Regular.ttf";
 
 function Promotion() {
   return (

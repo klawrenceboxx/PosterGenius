@@ -1,12 +1,13 @@
 import React from "react";
 import "./Product.css";
-import { v4 as uuidv4 } from "uuid";
-import { useStateValue } from "./StateProvider";
+import Heart from "../../DesignAssets/images/Heart.png";
+import {v4 as uuidv4} from "uuid";
+import {useStateValue} from "../StateProvider";
 
-function Product({ title, image, price }) {
+function Product({title, image, price}) {
   const id = uuidv4();
 
-  const [{ basket }, dispatch] = useStateValue();
+  const [{basket}, dispatch] = useStateValue();
 
   const addToBasket = () => {
     // dispatch the item into the data layer
@@ -27,12 +28,12 @@ function Product({ title, image, price }) {
         <img className="product__image" src={image} alt="Posters" />
       </div>
       <div className="product__info">
-        <div>
+        <div className="product__info__line1">
           <p className="product__info__text">{title}</p>
-          <img className="product__info__image" src="Heart" alt="heart" />
+          <img className="product__info__image" src={Heart} alt="heart" />
         </div>
-        <div>
-          <p className="product__info__price">{price}</p>
+        <div className="product__info__line2">
+          <p className="product__info__price">${price} CAD</p>
           <button onClick={addToBasket} className="Product__info__basket">
             Add to Basket
           </button>

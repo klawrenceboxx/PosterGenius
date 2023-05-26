@@ -1,7 +1,7 @@
 import React from "react";
 import "./Footer.css";
-import "../fonts/Poppins-Regular.ttf";
-import Logo from "../images/PosterGeniusV2.png";
+import "../../DesignAssets/fonts/Poppins-Regular.ttf";
+import Logo from "../../DesignAssets/images/PosterGeniusV2.png";
 
 function Footer() {
   return (

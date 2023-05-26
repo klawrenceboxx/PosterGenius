@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
-import {useStateValue} from "./StateProvider";
+import {useStateValue} from "../StateProvider";
 
 import "./Header.css";
-import Logo from "../images/PosterGeniusV2.png"; //the ../ is to go back one folder
-import Heart from "../images/Heart.png";
-import Cart from "../images/Cart.png";
-import "../fonts/Poppins-Regular.ttf";
+import Logo from "../../DesignAssets/images/PosterGeniusV2.png"; //the ../ is to go back one folder
+import Heart from "../../DesignAssets/images/Heart.png";
+import Cart from "../../DesignAssets/images/Cart.png";
+import "../../DesignAssets/fonts/Poppins-Regular.ttf";
 
 //rfce, BEM convention
 
@@ -36,8 +36,13 @@ function Header() {
             <Link to="/posters">
               <span className="header__option-one">Posters</span>
             </Link>
-            <span className="header__option-two">Collections</span>
-            <span className="header__option-three">Deals</span>
+            {/* ////////////////// */}
+            <Link to="/posterInfo">
+              <span>PosterInfo</span>
+            </Link>
+            {/* ////////////////// */}
+            {/* <span className="header__option-two">Collections</span>
+            <span className="header__option-three">Deals</span> */}
           </div>
         </div>
         {/* Header Navigation section TWO */}
@@ -51,15 +56,15 @@ function Header() {
 
         {/* Header Navigation section THREE */}
         <div className="header__nav header__nav-two">
-          <button className="header__option-button">
+          {/* <button className="header__option-button">
             <span className="header__option-button-text">Sign In</span>
-          </button>
+          </button> */}
           <Link to="/checkout">
             <img className="header__logo-cart" src={Cart} alt="PosterGenius" />
             <span>{(basket && basket.length) || 0}</span>
             {/* if basket is true, then return basket.length, else return 0, this is a ternary operator */}
           </Link>
-          <img className="header__logo-heart" src={Heart} alt="PosterGenius" />
+          {/* <img className="header__logo-heart" src={Heart} alt="PosterGenius" /> */}
         </div>
       </div>
 

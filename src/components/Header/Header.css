@@ -14,6 +14,11 @@
   background-color: #fff;
 }
 
+@media screen and (max-width: 768px) {
+  .header {
+    background-color: #7f0606;
+  }
+}
 /* Frame 7 */
 .header__nav-one {
   display: flex;
@@ -155,7 +160,7 @@
   flex: none;
   order: 1;
   flex-grow: 1;
-  background-image: url("../images/Search.png");
+  background-image: url("../../DesignAssets/images/Search.png");
   background-repeat: no-repeat;
   background-position: right 24px center;
   background-size: 24px 24px;

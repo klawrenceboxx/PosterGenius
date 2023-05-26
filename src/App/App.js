@@ -2,15 +2,16 @@ import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import React from "react";
 
 import "./App.css";
-import Header from "./components/Header";
-import Hero from "./components/Homepage/Hero";
-import Popular from "./components/Homepage/Popular";
-import Promotion from "./components/Homepage/Promotion";
-import Footer from "./components/Footer";
-import Posters from "./components/Posters";
-import Checkout from "./components/Checkout";
-import Payment from "./components/Payment";
-import {useStateValue} from "./components/StateProvider";
+import Header from "../components/Header/Header";
+import Hero from "../pages/Homepage/Hero";
+import Popular from "../pages/Homepage/Popular";
+import Promotion from "../pages/Homepage/Promotion";
+import Footer from "../components/Footer/Footer";
+import Posters from "../pages/Posters/Posters";
+import Checkout from "../pages/Checkout/Checkout";
+import Payment from "../pages/Payment/Payment";
+import PosterInfo from "../pages/PosterInfo/PosterInfo";
+import {useStateValue} from "../components/StateProvider";
 import {loadStripe} from "@stripe/stripe-js";
 import {Elements, useElements, useStripe} from "@stripe/react-stripe-js";
 
@@ -37,6 +38,7 @@ function App() {
           }
         />
         <Route path="/posters" element={<Posters />} />
+        <Route path="/posterInfo" element={<PosterInfo />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route
           path="/payment"
