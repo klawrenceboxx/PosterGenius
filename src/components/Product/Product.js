@@ -4,23 +4,23 @@ import Heart from "../../DesignAssets/images/Heart.png";
 import {v4 as uuidv4} from "uuid";
 import {useStateValue} from "../StateProvider";
 
-function Product({id, title, image, price}) {
-  // const id = uuidv4();
+function Product({title, image, price}) {
+  const id = uuidv4();
 
   const [{basket}, dispatch] = useStateValue();
 
-  // const addToBasket = () => {
-  //   // dispatch the item into the data layer
-  //   dispatch({
-  //     type: "ADD_TO_BASKET",
-  //     item: {
-  //       id: id,
-  //       title: title,
-  //       image: image,
-  //       price: price,
-  //     },
-  //   });
-  // };
+  const addToBasket = () => {
+    // dispatch the item into the data layer
+    dispatch({
+      type: "ADD_TO_BASKET",
+      item: {
+        id: id,
+        title: title,
+        image: image,
+        price: price,
+      },
+    });
+  };
 
   return (
     <div className="product" id={id}>
@@ -34,9 +34,9 @@ function Product({id, title, image, price}) {
         </div>
         <div className="product__info__line2">
           <p className="product__info__price">${price} CAD</p>
-          {/* <button onClick={addToBasket} className="Product__info__basket"> */}
-          {/* Add to Basket
-          </button> */}
+          <button onClick={addToBasket} className="Product__info__basket">
+            Add to Basket
+          </button>
         </div>
       </div>
     </div>
