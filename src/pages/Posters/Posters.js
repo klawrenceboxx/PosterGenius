@@ -42,6 +42,7 @@ function Posters() {
         //doc.data() returns the data of the document
         const docData = doc.data();
         return {
+          id: doc.id,
           url: docData.url,
           title: docData.Title,
           price: docData.Price,
@@ -78,12 +79,13 @@ function Posters() {
       </div>
 
       <div className="poster__gallery">
-        {posters.map((posterField) => {
+        {posters.map((poster) => {
           return (
             <Product
-              image={posterField.url}
-              title={posterField.title}
-              price={posterField.price}
+              key={poster.id}
+              image={poster.url}
+              title={poster.title}
+              price={poster.price}
             />
           );
         })}

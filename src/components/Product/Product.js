@@ -5,8 +5,6 @@ import {v4 as uuidv4} from "uuid";
 import {useStateValue} from "../StateProvider";
 
 function Product({title, image, price}) {
-  const id = uuidv4();
-
   const [{basket}, dispatch] = useStateValue();
 
   const addToBasket = () => {
@@ -14,7 +12,6 @@ function Product({title, image, price}) {
     dispatch({
       type: "ADD_TO_BASKET",
       item: {
-        id: id,
         title: title,
         image: image,
         price: price,
@@ -23,7 +20,7 @@ function Product({title, image, price}) {
   };
 
   return (
-    <div className="product" id={id}>
+    <div className="product">
       <div>
         <img className="product__image" src={image} alt="Posters" />
       </div>
