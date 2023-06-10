@@ -27,7 +27,7 @@
 }
 
 .product__info__image {
-  width: 10px;
+  width: 11%;
 }
 
 .Product__info__basket {
@@ -55,14 +55,17 @@
   flex-grow: 0;
 } */
 
-/* .product__image {
+.product__image {
   width: 220px;
   height: 340px;
   border-radius: 3px;
   flex: none;
   order: 0;
   flex-grow: 0;
-} */
+  box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.2);
+  /* box shadow: {horizontal} {vertical} {blur} {offset} {color};  */
+  margin-bottom: 5px;
+}
 
 /* .product__info {
   width: 232px;

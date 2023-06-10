@@ -72,7 +72,52 @@ function Payment() {
       <h1>
         Checkout (<Link to="/checkout">{basket?.length} items</Link>)
       </h1>
+      <div className="payment__contact">
+        <h3>1. Contact Information Already have an account? Please Sign In</h3>
+        <div className="payment__inputs">
+          <div className="payment__nameInput">
+            <input placeholder="First Name" type="text" />
+            <input placeholder="Last Name" type="text" />
+          </div>
+          <input placeholder="Email Address" type="text" />
+          <input placeholder="Phone Number" type="text" />
+        </div>
+      </div>
 
+      <div className="payment__contact">
+        <h3>2. Shipping address</h3>
+        <div className="payment__inputs">
+          <div className="payment__nameInput">
+            <input placeholder="First Name" type="text" />
+            <input placeholder="Last Name" type="text" />
+          </div>
+          <div className="payment__nameInput">
+            <input placeholder="Street Adress 1" type="text" />
+            <input placeholder="Apt/Unit No." type="text" />
+          </div>
+          <div className="payment__nameInput">
+            <input placeholder="Postal Code" type="text" />
+            <input placeholder="City" type="text" />
+            <input placeholder="Province" type="text" />
+          </div>
+        </div>
+      </div>
+
+      <div className="payment__contact">
+        <h3>3. Payment</h3>
+        <div className="payment__inputs">
+          <div>
+            <input type="checkbox" />
+            <input type="checkbox" />
+          </div>
+          <input placeholder="Card Number" type="text" />
+          <div className="payment__nameInput">
+            <input placeholder="MM*" type="text" />
+            <input placeholder="YY*" type="text" />
+            <input placeholder="CSV" type="text" />
+          </div>
+        </div>
+      </div>
       <div className="payment__section">
         <div className="payment__title">
           <h3>Delivery Address</h3>
