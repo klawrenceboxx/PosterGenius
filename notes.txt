@@ -116,3 +116,20 @@ const logger = require("firebase-functions/logger");
 // });
 
 //this file is goign to be the entry point for our application
+
+
+
+
+PosterGenius
+find out what the biggest size poster can be made === 27x40-Movie 24x36-large, 18x24-medium, 11x17-small
+find out about upscaler === 300 dpi, Topaz Gigapixel and photosohop
+=== convert to png to jpsg PNGtoJPG.com
+=== find out how much bleed and margin Printful needs
+go through reference designs === 
+generate largest poster size reference designs === Move 27x40-Movie
+"describe" poster and have chat GPT create a title and description for each one
+repeat 20 times
+picture ideas: cats, mountains, moose, botanical pictures, funny bathroom pictures, sleepy G, sleepy G,
+                                art art, simple sun pictures, minimalist mountain pictures, owl, starry night scenes,
+                                baby room pictures, food dining room, noir pictures, vector lines picture, sophia garden,
+                                Terry Fox, Miles Morales, thunder bay miniature

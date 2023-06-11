@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import {useStateValue} from "../StateProvider";
-
 import "./Header.css";
 import Logo from "../../DesignAssets/images/PosterGeniusV2.png"; //the ../ is to go back one folder
 import Heart from "../../DesignAssets/images/Heart.png";
@@ -14,63 +13,54 @@ function Header() {
   const [{basket}, dispatch] = useStateValue(); //useState is a hook, the [] is the initial value
 
   return (
-    <>
-      <div className="header">
-        {/* Header Navigation section ONE */}
-        <div className="header__nav header__nav-one">
-          {/* Logo icon and Title */}
+    <header>
+      <nav class="nav">
+        <ul class="nav__list">
+          <li class="nav__item">
+            <Link to="/">
+              <a href="#" class="nav__link">
+                {/* img */}
+                <img className="logo__img" src={Logo} alt="PosterGenius" />
+              </a>
+            </Link>
+          </li>
+          <li class="nav__item">
+            <Link to="/">
+              <a href="#" class="nav__link" className="logo__name">
+                PosterGenius
+              </a>
+            </Link>
+          </li>
 
-          <Link to="/">
-            <div className="header__logo">
-              <img
-                className="header__logo-image"
-                src={Logo}
-                alt="PosterGenius"
-              />
-              <span className="header__logo-text">PosterGenius</span>
-            </div>
-          </Link>
-
-          {/* Header Options */}
-          <div className="header__option">
+          <li class="nav__item">
             <Link to="/posters">
-              <span className="header__option-one">Posters</span>
+              <a href="#" class="nav__link">
+                Posters
+              </a>
             </Link>
-            {/* ////////////////// */}
+          </li>
+          <li class="nav__item">
             <Link to="/posterInfo">
-              <span>PosterInfo</span>
+              <a href="#" class="nav__link">
+                PosterInfo
+              </a>
             </Link>
-            {/* ////////////////// */}
-            {/* <span className="header__option-two">Collections</span>
-            <span className="header__option-three">Deals</span> */}
-          </div>
-        </div>
-        {/* Header Navigation section TWO */}
-        <div className="header__search">
-          <input
-            type="text"
-            className="header__search-input"
-            placeholder="Search"
-          />
-        </div>
+          </li>
+        </ul>
 
-        {/* Header Navigation section THREE */}
-        <div className="header__nav header__nav-two">
-          {/* <button className="header__option-button">
-            <span className="header__option-button-text">Sign In</span>
-          </button> */}
-          <Link to="/checkout">
-            <img className="header__logo-cart" src={Cart} alt="PosterGenius" />
-            <span>{(basket && basket.length) || 0}</span>
+        <form className="search">
+          <input type="text" className="search__input" placeholder="Search" />
+        </form>
+
+        <Link to="/checkout">
+          <div className="cart">
+            <img src={Cart} alt="PosterGenius" />
+            <p>{(basket && basket.length) || 0}</p>
             {/* if basket is true, then return basket.length, else return 0, this is a ternary operator */}
-          </Link>
-          {/* <img className="header__logo-heart" src={Heart} alt="PosterGenius" /> */}
-        </div>
-      </div>
-
-      {/* Header Divider */}
-      <hr className="header__divider" />
-    </>
+          </div>
+        </Link>
+      </nav>
+    </header>
   );
 }
 

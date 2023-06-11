@@ -1,0 +1,250 @@
+/* Frame 9 */
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 24px;
+  position: fixed;
+  width: 100%;
+  height: 80px;
+  right: 0px;
+  top: 0px;
+  z-index: 100;
+  background-color: #fff;
+}
+
+/* @media screen and (max-width: 768px) {
+    .header {
+      background-color: #7f0606;
+    }
+  } */
+/* Frame 7 */
+.header__nav-one {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 24px;
+  gap: 32px;
+  width: 591px;
+  height: 68px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+/* Frame 5 */
+.header__logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 16px;
+  width: 263px;
+  height: 48px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+/* PosterGenius V2 1 */
+.header__logo-image {
+  width: 48px;
+  height: 48px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+/* PosterGenius */
+.header__logo-text {
+  width: 199px;
+  height: 44px;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 29px;
+  line-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #150826;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+/* Frame 1 */
+.header__option {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 16px;
+  width: 248px;
+  height: 24px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+/* Link */
+.header__option-one {
+  width: 64px;
+  height: 24px;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #150826;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+/* Link */
+.header__option-two {
+  width: 96px;
+  height: 24px;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #150826;
+  flex: none;
+  order: 1;
+}
+
+.header__option-three {
+  width: 56px;
+  height: 24px;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  text-decoration-line: underline;
+  color: #712bcc;
+  flex: none;
+  order: 2;
+  flex-grow: 0;
+}
+
+.header__search {
+  width: 100%;
+  display: flex;
+}
+
+.header__search-input {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 9px 16px;
+  gap: 10px;
+  width: 505px;
+  height: 42px;
+  border: 2px solid rgba(21, 8, 38, 0.5);
+  border-radius: 5px;
+  flex: none;
+  order: 1;
+  flex-grow: 1;
+  background-image: url("../../DesignAssets/images/Search.png");
+  background-repeat: no-repeat;
+  background-position: right 24px center;
+  background-size: 24px 24px;
+}
+
+.header__nav-two {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0px 24px;
+  gap: 24px;
+  width: 296px;
+  height: 40px;
+  flex: none;
+  order: 2;
+  flex-grow: 0;
+}
+
+.header__option-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  gap: 8px;
+  width: 140px;
+  height: 40px;
+  background: linear-gradient(90deg, #b882ff 0%, #8e35ff 100%);
+  border-radius: 5px;
+  border: 0px solid #000;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.header__option-button-text {
+  height: 24px;
+  left: 25px;
+  right: 24px;
+  top: calc(50% - 24px / 2);
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #ffffff;
+}
+
+.header__divider {
+  position: absolute;
+  width: 1440px;
+  height: 1px;
+  left: 0px;
+  top: 0px;
+  background: #d9d9d9;
+}
+
+.header__logo-cart {
+  width: 30px;
+  height: 30px;
+  flex: none;
+  order: 2;
+  flex-grow: 0;
+}
+
+.header__logo-heart {
+  width: 30px;
+  height: 26.48px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.header__divider {
+  position: fixed;
+  width: 100%;
+  height: 1px;
+  top: 80px; /* adjust this value to position the line correctly */
+  background: #d9d9d9;
+  margin: 0;
+  border: none;
+  padding: 0;
+}

@@ -14,12 +14,11 @@ function CheckoutProduct({id, image, title, price}) {
   };
 
   return (
-    <div>
-      <img src={image} alt="" />
-      <div>
+    <div className="checkoutProduct">
+      <img className="checkoutProduct__image" src={image} alt="" />
+      <div className="checkoutProduct__info">
         <p>{title}</p>
-        <p>$</p>
-        <p>{price}</p>
+        <p>${price} CAD</p>
         <button onClick={removeFromBasket}>Remove From Basket</button>
       </div>
     </div>
