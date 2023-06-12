@@ -14,34 +14,34 @@ function Header() {
 
   return (
     <header>
-      <nav class="nav">
-        <ul class="nav__list">
-          <li class="nav__item">
+      <nav className="nav">
+        <ul className="nav__list">
+          <li className="nav__item">
             <Link to="/">
-              <a href="#" class="nav__link">
+              <a href="#" className="nav__link">
                 {/* img */}
                 <img className="logo__img" src={Logo} alt="PosterGenius" />
               </a>
             </Link>
           </li>
-          <li class="nav__item">
+          <li className="nav__item">
             <Link to="/">
-              <a href="#" class="nav__link" className="logo__name">
+              <a href="#" className="nav__link logo__name">
                 PosterGenius
               </a>
             </Link>
           </li>
 
-          <li class="nav__item">
+          <li className="nav__item">
             <Link to="/posters">
-              <a href="#" class="nav__link">
+              <a href="#" className="nav__link">
                 Posters
               </a>
             </Link>
           </li>
-          <li class="nav__item">
+          <li className="nav__item">
             <Link to="/posterInfo">
-              <a href="#" class="nav__link">
+              <a href="#" className="nav__link">
                 PosterInfo
               </a>
             </Link>
@@ -52,13 +52,13 @@ function Header() {
           <input type="text" className="search__input" placeholder="Search" />
         </form>
 
-        <Link to="/checkout">
-          <div className="cart">
+        <div className="cart">
+          <Link to="/checkout" className="cart__link">
             <img src={Cart} alt="PosterGenius" />
             <p>{(basket && basket.length) || 0}</p>
             {/* if basket is true, then return basket.length, else return 0, this is a ternary operator */}
-          </div>
-        </Link>
+          </Link>
+        </div>
       </nav>
     </header>
   );

@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Roboto:wght@100;300;400;500;700;900&display=swap");
 *,
 *::before,
 *::after {
@@ -21,6 +21,10 @@ header {
   background-color: #fff;
   border-bottom: 1px solid #0000002b;
   z-index: 999;
+}
+
+main {
+  margin-top: 5rem;
 }
 
 nav {
@@ -85,14 +89,32 @@ nav {
 
 .cart {
   display: flex;
-  text-align: flex-end;
+
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid #000; */
 }
 
 .cart img {
+  width: 2rem;
 }
 
 .cart p {
   font-size: 1.5rem;
   font-weight: 700;
   color: #150826;
+  /* border: 1px solid #000; */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.5rem;
+}
+
+.cart__link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit; /* This will inherit the color of the parent element and override the default blue color of the link */
 }

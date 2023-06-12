@@ -1,0 +1,118 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+}
+
+h1 {
+  display: inline-block;
+  margin: 0;
+  width: 100%;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 68px;
+  line-height: 80px;
+  letter-spacing: -0.015em;
+  color: #150826;
+  /* border: 1px solid #000; */
+}
+
+p {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 25px;
+  color: rgba(21, 8, 38, 0.75);
+  padding-top: 1.5em;
+  width: 80%;
+}
+
+.hero {
+  padding-top: 8rem;
+  padding-bottom: 4rem;
+  border-bottom: 1px solid #0000002b;
+}
+
+.container {
+  display: flex;
+  gap: 1rem;
+  width: 95%;
+  margin: 0 auto;
+  max-width: 2000px;
+  /* border: 1px solid #d41b1b; */
+}
+
+.container__left {
+  padding: 0 2rem;
+
+  /* border: 1px solid #000; */
+  width: 40%;
+}
+
+.container__right {
+  border: 1px solid #000;
+  width: 60%;
+}
+
+.hero .container__right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero .container__right img {
+  /* Add margins to your images. */
+  /* margin: 10px; */
+}
+
+.hero .container__right img:nth-child(1) {
+  /* Move the first image up and to the left. */
+  margin-top: -100px;
+  margin-left: -20px;
+}
+
+.hero .container__right img:nth-child(2) {
+  /* Move the second image up and to the left. */
+  margin-top: 40px;
+  margin-left: -20px;
+  z-index: 3;
+}
+
+.hero .container__right img:nth-child(3) {
+  /* Move the third image up and to the left even further. */
+  margin-top: -100px;
+  margin-left: -20px;
+}
+
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  color: #fff;
+  padding: 1.5rem 3rem;
+  margin-top: 3rem;
+  background: linear-gradient(90deg, #b882ff 0%, #8e35ff 100%);
+  box-shadow: 3px 5px 15px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+  /* border: 0px solid #000; */
+}
+
+.popular {
+  padding-top: 8rem;
+  padding-bottom: 4rem;
+  border-bottom: 1px solid #0000002b;
+  background: #f2f2f2;
+}
+
+.promotion {
+  padding-top: 8rem;
+  padding-bottom: 4rem;
+  border-bottom: 1px solid #0000002b;
+}

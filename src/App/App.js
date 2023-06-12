@@ -14,6 +14,7 @@ import PosterInfo from "../pages/PosterInfo/PosterInfo";
 import {useStateValue} from "../components/StateProvider";
 import {loadStripe} from "@stripe/stripe-js";
 import {Elements, useElements, useStripe} from "@stripe/react-stripe-js";
+import Homepage2 from "../pages/Homepage2/Homepage2";
 
 const promise = loadStripe(
   "pk_live_51N5z6KKWLTAcuCBt38Xyxb975FtX0NbVfraYPlDPdEvuYQHn4QdnAnKENV9kEf9MJ84HCtvB5fjNwaf8VobJvltC00S9zqyqrs"
@@ -26,30 +27,33 @@ function App() {
         <Header />
         {/* <Footer /> */}
       </div>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <Hero />
+      <main>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <Homepage2 />
+                {/* <Hero />
               <Popular />
-              <Promotion />
-            </>
-          }
-        />
-        <Route path="/posters" element={<Posters />} />
-        <Route path="/posterInfo" element={<PosterInfo />} />
-        <Route path="/checkout" element={<Checkout />} />
-        <Route
-          path="/payment"
-          element={
-            <Elements stripe={promise}>
-              <Payment />
-            </Elements>
-          }
-        />
-        {/* <Route path="/payment" element={<Payment />} /> */}
-      </Routes>
+              <Promotion /> */}
+              </>
+            }
+          />
+          <Route path="/posters" element={<Posters />} />
+          <Route path="/posterInfo" element={<PosterInfo />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route
+            path="/payment"
+            element={
+              <Elements stripe={promise}>
+                <Payment />
+              </Elements>
+            }
+          />
+          {/* <Route path="/payment" element={<Payment />} /> */}
+        </Routes>
+      </main>
       <div>
         <Footer />
       </div>
