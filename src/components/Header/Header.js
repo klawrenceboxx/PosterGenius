@@ -52,12 +52,17 @@ function Header() {
           <input type="text" className="search__input" placeholder="Search" />
         </form>
 
-        <div className="cart">
-          <Link to="/checkout" className="cart__link">
-            <img src={Cart} alt="PosterGenius" />
-            <p>{(basket && basket.length) || 0}</p>
-            {/* if basket is true, then return basket.length, else return 0, this is a ternary operator */}
-          </Link>
+        <div className="nav__list">
+          <div className="login">
+            <a href="">Sign in</a>
+          </div>
+          <div className="cart" className="nav__item">
+            <Link to="/checkout" className="cart__link">
+              <img src={Cart} alt="PosterGenius" />
+              <p>{(basket && basket.length) || 0}</p>
+              {/* if basket is true, then return basket.length, else return 0, this is a ternary operator */}
+            </Link>
+          </div>
         </div>
       </nav>
     </header>
