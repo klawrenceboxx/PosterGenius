@@ -10,13 +10,26 @@ body {
   font-size: 1rem;
 }
 
-.footer {
-  position: absolute;
+footer {
   width: 100%;
-  height: 400px;
-  left: 0px;
-  top: 1979px;
   background: #b882ff;
+  margin: 0 auto;
+}
+
+.footer {
+  padding-top: 2em;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav__list--left {
+  display: flex;
+}
+
+.nav__list--right {
+  display: flex;
+  flex-direction: column;
 }
 
 /* this code should make the footer stick to the bottom provided all the other pages are not absolute positioning */
@@ -36,7 +49,7 @@ body {
   background: #b882ff;
 } */
 
-.footer_logo {
+/* .footer_logo {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -233,4 +246,4 @@ body {
   height: 40px;
   left: 540px;
   top: 336px;
-}
+} */

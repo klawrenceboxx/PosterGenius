@@ -1,63 +1,80 @@
 import React from "react";
+import {Link} from "react-router-dom";
+
 import "./Footer.css";
 import "../../DesignAssets/fonts/Poppins-Regular.ttf";
 import Logo from "../../DesignAssets/images/PosterGeniusV2.png";
 
 function Footer() {
   return (
-    <div className="footer">
-      {/* Logo icon and Title */}
-      <div className="footer_logo">
-        <img className="footer__logo-image" src={Logo} alt="PosterGenius" />
-        <span className="footer__logo-text">PosterGenius</span>
-      </div>
+    // <footer>
 
-      {/* Footer Navigation */}
-      <div className="footer__nav">
-        <div className="footer__nav-one">
-          <span className="footer__nav-header">Customer Service</span>
-          <br />
-          <br />
-          <span className="footer__nav-text">
-            Shipping & Returns Contact US GIft Card FAQ
-          </span>
-        </div>
-        <div className="footer__nav-two">
-          <span className="footer__nav-header">Information</span>
-          <br />
-          <br />
-          <span className="footer__nav-text">
-            About Press Inquiries Terms & Conditions Privacy Setting & Policy
-          </span>
-        </div>
-        <div className="footer__nav-three">
-          <span className="footer__nav-header">Work With Us</span>
-          <br />
-          <br />
-          <span className="footer__nav-text">
-            Professionals Artist Submissions TPC Apartment Career
-          </span>
-        </div>
-        <div className="footer__nav-four">
-          <span className="footer__nav-header">Follow Us</span>
-          <br />
-          <br />
-          <span className="footer__nav-text">Instagram Facebook Pinterest</span>
-        </div>
-      </div>
+    <footer>
+      <nav className="footer">
+        <ul className="nav__list">
+          <li className="nav__item">
+            <Link to="/">
+              <a href="#" className="nav__link">
+                {/* img */}
+                <img className="logo__img" src={Logo} alt="PosterGenius" />
+              </a>
+            </Link>
+          </li>
+          <li className="nav__item">
+            <Link to="/">
+              <a href="#" className="nav__link logo__name">
+                PosterGenius
+              </a>
+            </Link>
+          </li>
+        </ul>
 
-      {/* Footer Newsletter */}
-      <div className="footer__newsletter">
-        <span className="footer__newsletter-title">News Letter</span>
-        <input className="footer__input" type="text" placeholder="Email" />
-        <button className="footer__newslsetter-button">
-          <span className="footer__newsletter-button-text">Subscribe</span>
-        </button>
-      </div>
+        <div className="nav__list">
+          <div className="nav__list--left">
+            <ul>
+              <li>Customer Service</li>
+              <li>Shipping & Returns</li>
+              <li>Contact US</li>
+              <li>GIft Card</li>
+              <li>FAQ</li>
+            </ul>
 
-      {/* Footer Terms */}
-      <div className="footer__terms"></div>
-    </div>
+            <ul>
+              <li>Information</li>
+              <li>About</li>
+              <li>Press Inquiries</li>
+              <li>Terms & Conditons</li>
+              <li>Privacy Settings & Policy</li>
+            </ul>
+
+            <ul>
+              <li>Worth With us</li>
+              <li>Porfessionals</li>
+              <li>Artisist Submissions</li>
+              <li>TPC Apartment</li>
+              <li>Career</li>
+            </ul>
+
+            <ul>
+              <li>Follow US</li>
+              <li>Instagram</li>
+              <li>Facebook</li>
+              <li>Pinterest</li>
+            </ul>
+          </div>
+          <div className="nav__list--right">
+            <h4>NewsLetter</h4>
+            <input type="text" placeholder="email" />
+            <button>Subscribe</button>
+          </div>
+        </div>
+
+        {/* Footer Terms */}
+        <div>
+          <p>2010 - 2023 Privacy - Terms</p>
+        </div>
+      </nav>
+    </footer>
   );
 }
 

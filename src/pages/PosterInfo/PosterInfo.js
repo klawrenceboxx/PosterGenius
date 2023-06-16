@@ -24,10 +24,7 @@ function PosterInfo() {
           {/* <h1>{name}</h1> */}
           {/* <p>{details}</p> */}
           {/* <h1>Dog</h1> */}
-          <p>
-            Super epic photo of kang being a badass poster pictures wall art
-            canvas moder posters
-          </p>
+          <h1>Title</h1>
           <h3>CAD $36.87</h3>
           <div className="line"></div>
           <p>size (inch)</p>

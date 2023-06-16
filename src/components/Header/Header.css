@@ -47,7 +47,7 @@ nav {
   margin: 0;
   padding: 0;
   align-items: center;
-  border: 1px solid #000;
+  /* border: 1px solid #000; */
 }
 
 .nav__item {
@@ -58,6 +58,10 @@ nav {
 .nav__item a {
   text-decoration: none;
   color: #000;
+}
+
+.nav__item a:hover {
+  color: #b882ff;
 }
 
 .logo__name {
@@ -74,33 +78,39 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 60%;
   min-width: 200px;
+  /* border: 1px solid #000; */
 }
 
 .search__input {
   height: 3.5rem;
-  width: 60%;
+  width: 100%;
   background-image: url("../../DesignAssets/images/Search.png");
   background-repeat: no-repeat;
   background-position: right 2em center;
   background-size: 1.5rem;
 }
 
-/* .login {
+.login {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
   line-height: 24px;
-
   display: flex;
   align-items: center;
   text-align: center;
   color: #ffffff;
   background: linear-gradient(90deg, #b882ff 0%, #8e35ff 100%);
-  padding: 0.5rem 4rem;
-} */
+  padding: 0.5em 3em;
+  border-radius: 5px;
+}
+
+.login a {
+  color: #fff;
+  text-decoration: none;
+}
 
 .cart {
   display: flex;

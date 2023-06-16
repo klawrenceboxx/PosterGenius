@@ -3,6 +3,9 @@ import "./Homepage2.css";
 import Miles from "../../DesignAssets/images/Miles_Morales.png";
 import Tony from "../../DesignAssets/images/Tony_Stark.png";
 import Kang from "../../DesignAssets/images/Kang.png";
+import Goku from "../../DesignAssets/images/Goku.png";
+import Landscape from "../../DesignAssets/images/Landscape.png";
+import Kang2 from "../../DesignAssets/images/Kang2.png";
 
 function Homepage2() {
   return (
@@ -39,9 +42,9 @@ function Homepage2() {
       <section className="popular">
         <div className="container">
           <div className="container__left">
-            <img src="" alt="" />
-            <img src="" alt="" />
-            <img src="" alt="" />
+            <img src={Landscape} alt="" />
+            <img src={Goku} alt="" />
+            {/* <img src="" alt="" /> */}
             <div></div>
             <div></div>
           </div>
@@ -71,9 +74,9 @@ function Homepage2() {
             </a>
           </div>
           <div className="container__right">
-            <img src="" alt="" />
-            <img src="" alt="" />
-            <img src="" alt="" />
+            <img src={Kang2} alt="" />
+            {/* <img src="" alt="" />
+            <img src="" alt="" /> */}
             <div></div>
             <div></div>
           </div>

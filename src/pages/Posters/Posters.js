@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import {storage, db} from "../../firebase";
 import {ref, listAll, getDownloadURL} from "firebase/storage";
 // import {db} from "../../firebase";
-import frozen from "../../DesignAssets/images/frozen_forest.png";
+import Landscape from "../../DesignAssets/images/Landscape.png";
 import "./Posters.css";
 import "../../DesignAssets/fonts/Poppins-Regular.ttf";
 import "../../DesignAssets/fonts/RobotoFlex-Regular.ttf";
@@ -14,6 +14,7 @@ import {
   query,
   onSnapshot,
 } from "firebase/firestore";
+import {Link} from "react-router-dom";
 
 function Posters() {
   const [posters, setPosters] = useState([]);
@@ -53,36 +54,36 @@ function Posters() {
   }, []);
 
   return (
-    <div className="posters__page">
+    <div className="posters">
       <div className="posters__quote">
-        <div className="posters__hero">
-          <span className="posters__hero-header">All Posters & Wall Art</span>
-          <span className="posters__hero-text">
-            Browse our full collection of posters and art prints, ranging from
-            elaborate infographics to breathtaking scenery
-          </span>
-          <p className="posters__hero-texttwo">
-            Take the world with you wherever you go. Give your friend the worl+
-            with out ner world feature poster
-          </p>
-        </div>
-        <div>
-          <img
-            className="posters__frosty-forest"
-            src={frozen}
-            alt="frosty forest"
-          />
+        <div className="container">
+          <div className="container__left">
+            <h1>All Posters & Wall Art</h1>
+            <p>
+              Browse our full collection of posters and art prints, ranging from
+              elaborate infographics to breathtaking scenery
+            </p>
+            <p>
+              Take the world with you wherever you go. Give your friend the
+              world with out ner world feature poster
+            </p>
+          </div>
+          <div className="container__right ias">
+            <img src={Landscape} alt="frosty forest" />
+          </div>
         </div>
       </div>
 
       <div className="poster__gallery">
         {posters.map((posterField) => {
           return (
-            <Product
-              image={posterField.url}
-              title={posterField.title}
-              price={posterField.price}
-            />
+            <Link to="/posterinfo">
+              <Product
+                image={posterField.url}
+                title={posterField.title}
+                price={posterField.price}
+              />
+            </Link>
           );
         })}
       </div>
