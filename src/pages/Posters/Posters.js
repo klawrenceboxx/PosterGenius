@@ -21,14 +21,6 @@ function Posters() {
 
   const imageListRef = ref(storage, "images/");
 
-  // useEffect(() => {
-  //   listAll(imageListRef).then((response) => {
-  //     response.items.forEach((itemRef) => {
-  //       getDownloadURL(itemRef).then((url) => {
-  //         setPosters((prev) => [...prev, url]);
-  //       });
-  //     });
-
   useEffect(() => {
     const fetchData = async () => {
       //creates a reference to the poster collection in firebase
@@ -41,6 +33,7 @@ function Posters() {
         //doc.data() returns the data of the document
         const docData = doc.data();
         return {
+          id: doc.id,
           url: docData.url,
           title: docData.Title,
           price: docData.Price,
@@ -77,8 +70,9 @@ function Posters() {
       <div className="poster__gallery">
         {posters.map((posterField) => {
           return (
-            <Link to="/posterinfo">
+            <Link to={`/posterinfo/${posterField.id}`}>
               <Product
+                key={posterField.id}
                 image={posterField.url}
                 title={posterField.title}
                 price={posterField.price}

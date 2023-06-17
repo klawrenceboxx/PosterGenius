@@ -41,7 +41,7 @@ function App() {
             }
           />
           <Route path="/posters" element={<Posters />} />
-          <Route path="/posterInfo" element={<PosterInfo />} />
+          <Route path="/posterInfo/:id" element={<PosterInfo />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route
             path="/payment"

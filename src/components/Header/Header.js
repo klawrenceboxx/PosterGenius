@@ -40,7 +40,7 @@ function Header() {
             </Link>
           </li>
           <li className="nav__item">
-            <Link to="/posterInfo">
+            <Link to="/posterInfo/:id">
               <a href="#" className="nav__link">
                 PosterInfo
               </a>

@@ -13,7 +13,7 @@ const stripe = require("stripe")(process.env.SECRET_KEY);
 const app = express();
 
 // - Middlewares
-app.use(cors({origin: true}));
+app.use(cors());
 app.use(express.json());
 
 // - API routes
@@ -30,7 +30,7 @@ app.post("/payments/create", async (request, response) => {
   });
 
   // OK - Created
-  response.status(201).send({
+  response.status(200).send({
     clientSecret: paymentIntent.client_secret,
   });
 });

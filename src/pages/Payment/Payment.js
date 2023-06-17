@@ -69,7 +69,7 @@ function Payment() {
 
   return (
     <div className="payment__container">
-      <h1>
+      <h1 style={{margin: "0.5em 0"}}>
         Checkout (<Link to="/checkout">{basket?.length} items</Link>)
       </h1>
       <div className="payment__contact">
@@ -180,3 +180,5 @@ function Payment() {
 export default Payment;
 
 //6:40:26
+
+// firebase emulators:start

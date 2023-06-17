@@ -2,30 +2,59 @@ import React from "react";
 import "./PosterInfo.css";
 import dog from "../../DesignAssets/images_posters/dog.png";
 import "../../DesignAssets/fonts/Poppins-Regular.ttf";
+import {useParams} from "react-router-dom";
+import {getDoc, doc, onSnapshot} from "firebase/firestore";
+import {db} from "../../firebase";
+import {useState, useEffect, useMemo} from "react";
 
 // import { Link } from "react-router-dom";
 
 function PosterInfo() {
+  const {id} = useParams();
+  const [data, setData] = useState(null); // Initialize a state variable to store the document data
+
+  // get a single document
+  const docRef = useMemo(() => doc(db, "Posters", id), [id]);
+
+  useEffect(() => {
+    const unsubscribe = onSnapshot(docRef, (doc) => {
+      if (doc.exists()) {
+        console.log("Current data: ", doc.data());
+        setData(doc.data()); // Set the document data to state
+      } else {
+        console.log("No such document!");
+      }
+    });
+
+    // Clean up function to unsubscribe from the snapshot on component unmount
+    return () => unsubscribe();
+  }, [docRef]);
+
+  if (!data) {
+    // Show loading state while the data is being fetched
+    return <div>Loading...</div>;
+  }
+
   return (
     <div>
       <div className="product__detail__container">
         <div className="images">
           <div className="small__images__container">
-            <img src={dog} alt="" className="small__image" />
-            <img src={dog} alt="" className="small__image" />
-            <img src={dog} alt="" className="small__image" />
-            <img src={dog} alt="" className="small__image" />
+            <img src={data.url} alt="" className="small__image" />
+            <img src={data.url} alt="" className="small__image" />
+            <img src={data.url} alt="" className="small__image" />
+            <img src={data.url} alt="" className="small__image" />
           </div>
           <div className="image__container">
-            <img src={dog} alt="" className="product__detail__image" />
+            <img src={data.url} alt="" className="product__detail__image" />
           </div>
         </div>
         <div className="product__detail__description">
           {/* <h1>{name}</h1> */}
           {/* <p>{details}</p> */}
           {/* <h1>Dog</h1> */}
-          <h1>Title</h1>
-          <h3>CAD $36.87</h3>
+          <h1>{data.Title}</h1>
+          <h3>CAD ${data.Price}</h3>
           <div className="line"></div>
           <p>size (inch)</p>
           <ul>

@@ -21,6 +21,10 @@
   /* border: 1px solid #000; */
 }
 
+.product__detail__image {
+  width: 100%;
+}
+
 .small__images__container {
   display: flex;
   flex-direction: column;
