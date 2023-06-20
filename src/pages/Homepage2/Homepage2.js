@@ -13,7 +13,7 @@ function Homepage2() {
       <section className="hero">
         <div className="container">
           <div className="container__left">
-            <h1>Featured AI-Generated Posters</h1>
+            <h1>Featured AI-Generated and boogers Posters</h1>
             <p>
               Dive into the amazing Marvel Cinematic Unviers with art work
               generated throughout the mutliverse
