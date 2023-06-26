@@ -20,19 +20,34 @@ function Payment() {
   const [processing, setProcessing] = useState("");
   const [error, setError] = useState(null);
   const [disabled, setDisabled] = useState(true);
-  const [clientSecret, setClientSecret] = useState(true);
+  // clientSecret is how stripe knows how much to charge the customer. should be a sting that contains the secret key that we generated in the backend
+  const [clientSecret, setClientSecret] = useState("");
 
   useEffect(() => {
     // this useEffect will only run when the basket changes
     // generate the special stripe secret which allows us to charge a customer
     const getClientSecret = async () => {
-      const response = await axios({
-        // axios is a library that allows us to make requests
-        method: "post",
-        // Stripe expects the total in a currencies subunits
-        url: `/payments/create?total=${getBasketTotal(basket) * 100}`, // this is the endpoint we created in the backend
-      });
-      setClientSecret(response.data.clientSecret);
+      try {
+        const response = await axios({
+          // axios is a library that allows us to make requests
+          method: "post",
+          // Stripe expects the total in a currencies subunits
+          url: `/payments/create`,
+          data: {
+            total: getBasketTotal(basket) * 100,
+          }, // this is the endpoint we created in the backend
+        });
+        setClientSecret(response.data.clientSecret);
+      } catch (error) {
+        console.error("Error with getting client secret:", error.message);
+        if (error.response) {
+          console.error("Response data:", error.response.data);
+          console.error("Response status:", error.response.status);
+          console.error("Response headers:", error.response.headers);
+        } else if (error.request) {
+          console.error("Request:", error.request);
+        }
+      }
     };
 
     getClientSecret();
@@ -44,20 +59,25 @@ function Payment() {
     e.preventDefault();
     setProcessing(true);
 
-    const payload = await stripe
-      .confirmCardPayment(clientSecret, {
+    console.log(clientSecret);
+
+
+    try {
+      const {paymentIntent} = await stripe.confirmCardPayment(clientSecret, {
         payment_method: {
           card: elements.getElement(CardElement),
         },
-      })
-      .then(({paymentIntent}) => {
-        // paymentIntent = payment confirmation
-        setSucceeded(true);
-        setError(null);
-        setProcessing(false);
-
-        navigate("/orders"); // this will prevent the user from going back to the payment page after they have submitted their payment
       });
+      // paymentIntent = payment confirmation
+      setSucceeded(true);
+      setError(null);
+      setProcessing(false);
+
+      navigate("/orders"); // this will prevent the user from going back to the payment page after they have submitted their payment
+    } catch (error) {
+      setError(`Payment failed: ${error.message}`);
+      setProcessing(false);
+    }
   };
 
   const handleChange = (e) => {
@@ -182,3 +202,8 @@ export default Payment;
 //6:40:26
 
 // firebase emulators:start
+
+// 6:18 axios
+// 6:34 server
+// firebase init, firebase functions cloud functions
+// 6:52 open emulator

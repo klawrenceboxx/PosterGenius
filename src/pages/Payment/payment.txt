@@ -1,0 +1,15 @@
+  useEffect(() => {
+    // this useEffect will only run when the basket changes
+    // generate the special stripe secret which allows us to charge a customer
+    const getClientSecret = async () => {
+      const response = await axios({
+        // axios is a library that allows us to make requests
+        method: "post",
+        // Stripe expects the total in a currencies subunits
+        url: `/payments/create?total=${getBasketTotal(basket) * 100}`, // this is the endpoint we created in the backend
+      });
+      setClientSecret(response.data.clientSecret);
+    };
+
+    getClientSecret();
+  }, [basket]);

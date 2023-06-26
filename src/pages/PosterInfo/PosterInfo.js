@@ -6,12 +6,14 @@ import {useParams} from "react-router-dom";
 import {getDoc, doc, onSnapshot} from "firebase/firestore";
 import {db} from "../../firebase";
 import {useState, useEffect, useMemo} from "react";
+import {useStateValue} from "../../components/StateProvider";
 
 // import { Link } from "react-router-dom";
 
 function PosterInfo() {
   const {id} = useParams();
   const [data, setData] = useState(null); // Initialize a state variable to store the document data
+  const [{basket}, dispatch] = useStateValue();
 
   // get a single document
   const docRef = useMemo(() => doc(db, "Posters", id), [id]);
@@ -34,6 +36,21 @@ function PosterInfo() {
     // Show loading state while the data is being fetched
     return <div>Loading...</div>;
   }
+
+  const addToBasket = (event) => {
+    event.preventDefault(); // Prevent navigation
+
+    // dispatch the item into the data layer
+    dispatch({
+      type: "ADD_TO_BASKET",
+      item: {
+        id: data.id,
+        title: data.Title,
+        image: data.url,
+        price: data.Price,
+      },
+    });
+  };
 
   return (
     <div>
@@ -63,7 +80,7 @@ function PosterInfo() {
             <li>printed with shiny, holographic foil</li>
             <li>frame not included</li>
           </ul>
-          <button>Add to Cart</button>
+          <button onClick={addToBasket}>Add to Cart</button>
         </div>
       </div>
       <div className="product__detail">
