@@ -32,10 +32,7 @@ function Payment() {
           // axios is a library that allows us to make requests
           method: "post",
           // Stripe expects the total in a currencies subunits
-          url: `/payments/create`,
-          data: {
-            total: getBasketTotal(basket) * 100,
-          }, // this is the endpoint we created in the backend
+          url: `/payments/create?total=${getBasketTotal(basket) * 100}`,
         });
         setClientSecret(response.data.clientSecret);
       } catch (error) {
@@ -55,36 +52,42 @@ function Payment() {
 
   console.log("THE SECRET IS >>>", clientSecret);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     setProcessing(true);
 
     console.log(clientSecret);
 
-
     try {
-      const {paymentIntent} = await stripe.confirmCardPayment(clientSecret, {
-        payment_method: {
-          card: elements.getElement(CardElement),
-        },
-      });
-      // paymentIntent = payment confirmation
-      setSucceeded(true);
-      setError(null);
-      setProcessing(false);
+      const payload = await stripe
+        .confirmCardPayment(clientSecret, {
+          payment_method: {
+            card: elements.getElement(CardElement),
+          },
+        })
+        .then(({paymentIntent}) => {
+          // paymentIntent = payment confirmation
+          setSucceeded(true);
+          setError(null);
+          setProcessing(false);
 
-      navigate("/orders"); // this will prevent the user from going back to the payment page after they have submitted their payment
+          dispatch({
+            type: "EMPTY_BASKET",
+          });
+
+          navigate("/orders");
+        }); // this will prevent the user from going back to the payment page after they have submitted their payment
     } catch (error) {
       setError(`Payment failed: ${error.message}`);
       setProcessing(false);
     }
   };
 
-  const handleChange = (e) => {
+  const handleChange = (event) => {
     // Listen for changes in the CardElement
     // and display any errors as the customer types their card details
-    setDisabled(e.empty);
-    setError(e.error ? e.error.message : "");
+    setDisabled(event.empty);
+    setError(event.error ? event.error.message : "");
   };
 
   return (
