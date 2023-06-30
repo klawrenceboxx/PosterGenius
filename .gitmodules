@@ -1,0 +1,3 @@
+[submodule "PosterGenius"]
+    path = PosterGenius
+    url = git://github.com/username/PosterGenius.git
