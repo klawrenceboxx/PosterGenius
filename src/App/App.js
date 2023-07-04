@@ -16,6 +16,7 @@ import {loadStripe} from "@stripe/stripe-js";
 import {Elements, useElements, useStripe} from "@stripe/react-stripe-js";
 import Homepage2 from "../pages/Homepage2/Homepage2";
 import Orders from "../pages/Orders/Orders";
+import Login from "../pages/Login/Login";
 
 const promise = loadStripe(
   "pk_test_51N5z6KKWLTAcuCBtS9mA00hfM9jURZnEwCw6lhqrrXrayh1SogeNQUek4vzgIbyIGv6I2C2DL7ZxbIshY5h1kTZd00UJtbwvNO"
@@ -43,6 +44,7 @@ function App() {
           />
           <Route path="/posters" element={<Posters />} />
           <Route path="/posterInfo/:id" element={<PosterInfo />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route
             path="/payment"
