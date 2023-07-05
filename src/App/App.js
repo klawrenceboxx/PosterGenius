@@ -26,41 +26,69 @@ function App() {
   return (
     <Router>
       <div className="app">
-        <Header />
-        {/* <Footer /> */}
-      </div>
-      <main>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <Homepage2 />
-                {/* <Hero />
-              <Popular />
-              <Promotion /> */}
-              </>
-            }
-          />
-          <Route path="/posters" element={<Posters />} />
-          <Route path="/posterInfo/:id" element={<PosterInfo />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/checkout" element={<Checkout />} />
-          <Route
-            path="/payment"
-            element={
-              <Elements stripe={promise}>
-                <Payment />
-              </Elements>
-            }
-          />
-          <Route path="/Orders" element={<Orders />} />
+        <main>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <>
+                  <Header />
+                  <Homepage2 />
+                </>
+              }
+            />
+            <Route
+              path="/posters"
+              element={
+                <>
+                  <Header />
+                  <Posters />
+                </>
+              }
+            />
+            <Route
+              path="/posterInfo/:id"
+              element={
+                <>
+                  <Header />
+                  <PosterInfo />
+                </>
+              }
+            />
+            <Route
+              path="/login"
+              element={
+                <>
+                  <Login />
+                </>
+              }
+            />
+            <Route
+              path="/checkout"
+              element={
+                <>
+                  <Header />
+                  <Checkout />
+                </>
+              }
+            />
+            <Route
+              path="/payment"
+              element={
+                <Elements stripe={promise}>
+                  <Header />
+                  <Payment />
+                </Elements>
+              }
+            />
+            <Route path="/Orders" element={<Orders />} />
 
-          {/* <Route path="/payment" element={<Payment />} /> */}
-        </Routes>
-      </main>
-      <div>
-        <Footer />
+            {/* <Route path="/payment" element={<Payment />} /> */}
+          </Routes>
+        </main>
+        <div>
+          <Footer />
+        </div>
       </div>
     </Router>
   );
