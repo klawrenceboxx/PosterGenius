@@ -3,6 +3,11 @@ import "./Login.css";
 import Logo from "../../DesignAssets/images/PosterGeniusV2.png"; //the ../ is to go back one folder
 import {Link, useNavigate} from "react-router-dom";
 import {auth} from "../../firebase";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 
 function Login() {
   const navigate = useNavigate();
@@ -12,27 +17,37 @@ function Login() {
   const signIn = (e) => {
     e.preventDefault(); //stops the refresh
 
-    auth
-      .signInWithEmailAndPassword(email, password)
-      .then((auth) => {
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
         navigate("/");
       })
-      .catch((error) => alert(error.message));
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+      });
   };
 
   const register = (e) => {
     e.preventDefault(); //stops the refresh
 
-    auth
-      .createUserWithEmailAndPassword(email, password)
-      .then((auth) => {
+    const auth = getAuth();
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
         //it successfully created a new user with email and password
 
         if (auth) {
+          const user = userCredential.user;
+
           navigate("/");
         }
       })
-      .catch((error) => alert(error.message));
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
+      });
   };
 
   return (

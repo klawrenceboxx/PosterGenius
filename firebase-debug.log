@@ -1,0 +1,116 @@
+[debug] [2023-07-06T00:27:23.632Z] ----------------------------------------------------------------------
+[debug] [2023-07-06T00:27:23.634Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Kalee\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js emulators:start
+[debug] [2023-07-06T00:27:23.635Z] CLI Version:   12.4.2
+[debug] [2023-07-06T00:27:23.635Z] Platform:      win32
+[debug] [2023-07-06T00:27:23.636Z] Node Version:  v16.14.0
+[debug] [2023-07-06T00:27:23.638Z] Time:          Wed Jul 05 2023 20:27:23 GMT-0400 (Eastern Daylight Saving Time)
+[debug] [2023-07-06T00:27:23.639Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-07-06T00:27:23.644Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2023-07-06T00:27:23.781Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-07-06T00:27:23.782Z] > authorizing via signed-in user (kaleellawrenceboxx@gmail.com)
+[info] i  emulators: Starting emulators: functions, hosting {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: functions, hosting"}}
+[debug] [2023-07-06T00:27:23.805Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-07-06T00:27:23.806Z] [hosting] Hosting Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[warn] !  ui: Emulator UI unable to start on port 4000, starting on 4001 instead. {"metadata":{"emulator":{"name":"ui"},"message":"Emulator UI unable to start on port 4000, starting on 4001 instead."}}
+[debug] [2023-07-06T00:27:23.809Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"hosting":[{"address":"127.0.0.1","family":"IPv4","port":5000}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4001},{"address":"::1","family":"IPv6","port":4001}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[warn] !  emulators: It seems that you are running multiple instances of the emulator suite for project postergenius-14856. This may result in unexpected behavior. 
+[debug] [2023-07-06T00:27:23.835Z] [hub] writing locator at C:\Users\Kalee\AppData\Local\Temp\hub-postergenius-14856.json
+[debug] [2023-07-06T00:27:23.934Z] [functions] Functions Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-07-06T00:27:23.934Z] [eventarc] Eventarc Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-07-06T00:27:23.934Z] late-assigned ports for functions and eventarc emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"hosting":[{"address":"127.0.0.1","family":"IPv4","port":5000}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4001},{"address":"::1","family":"IPv6","port":4001}],"functions":[{"address":"127.0.0.1","family":"IPv4","port":5001}],"eventarc":[{"address":"127.0.0.1","family":"IPv4","port":9299}]},"metadata":{"message":"late-assigned ports for functions and eventarc emulators"}}
+[warn] !  functions: The following emulators are not running, calls to these services from the Functions emulator will affect production: auth, firestore, database, pubsub, storage {"metadata":{"emulator":{"name":"functions"},"message":"The following emulators are not running, calls to these services from the Functions emulator will affect production: \u001b[1mauth, firestore, database, pubsub, storage\u001b[22m"}}
+[debug] [2023-07-06T00:27:23.943Z] defaultcredentials: writing to file C:\Users\Kalee\AppData\Roaming\firebase\kaleellawrenceboxx_gmail_com_application_default_credentials.json
+[debug] [2023-07-06T00:27:23.955Z] Setting GAC to C:\Users\Kalee\AppData\Roaming\firebase\kaleellawrenceboxx_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to C:\\Users\\Kalee\\AppData\\Roaming\\firebase\\kaleellawrenceboxx_gmail_com_application_default_credentials.json"}}
+[debug] [2023-07-06T00:27:23.957Z] > refreshing access token with scopes: []
+[debug] [2023-07-06T00:27:23.958Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-07-06T00:27:23.959Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-07-06T00:27:24.101Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2023-07-06T00:27:24.101Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2023-07-06T00:27:24.303Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2023-07-06T00:27:24.303Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-07-06T00:27:24.315Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/postergenius-14856/adminSdkConfig [none]
+[debug] [2023-07-06T00:27:24.558Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/postergenius-14856/adminSdkConfig 200
+[debug] [2023-07-06T00:27:24.559Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/postergenius-14856/adminSdkConfig {"projectId":"postergenius-14856","storageBucket":"postergenius-14856.appspot.com","locationId":"us-central"}
+[debug] [2023-07-06T00:27:24.583Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/postergenius-14856/sites 
+[debug] [2023-07-06T00:27:24.997Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/postergenius-14856/sites 200
+[debug] [2023-07-06T00:27:24.997Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/postergenius-14856/sites {"sites":[{"name":"projects/postergenius-14856/sites/postergenius-14856","defaultUrl":"https://postergenius-14856.web.app","appId":"1:288158376102:web:ead403b2b25e7034f05467","type":"DEFAULT_SITE"}]}
+[debug] [2023-07-06T00:27:24.998Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/postergenius-14856/webApps/1:288158376102:web:ead403b2b25e7034f05467/config [none]
+[debug] [2023-07-06T00:27:25.358Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/postergenius-14856/webApps/1:288158376102:web:ead403b2b25e7034f05467/config 200
+[debug] [2023-07-06T00:27:25.358Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/postergenius-14856/webApps/1:288158376102:web:ead403b2b25e7034f05467/config {"projectId":"postergenius-14856","appId":"1:288158376102:web:ead403b2b25e7034f05467","storageBucket":"postergenius-14856.appspot.com","locationId":"us-central","apiKey":"AIzaSyAj6p5VFSExYSWIZUllJDfvPUa3CBJfDZ0","authDomain":"postergenius-14856.firebaseapp.com","messagingSenderId":"288158376102","measurementId":"G-WS50WJJDNT"}
+[debug] [2023-07-06T00:27:25.364Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/postergenius-14856 [none]
+[debug] [2023-07-06T00:27:25.570Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/postergenius-14856 200
+[debug] [2023-07-06T00:27:25.571Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/postergenius-14856 {"projectId":"postergenius-14856","projectNumber":"288158376102","displayName":"PosterGenius","name":"projects/postergenius-14856","resources":{"hostingSite":"postergenius-14856","storageBucket":"postergenius-14856.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_4d8c508c-baaf-4ac7-be2d-73b77a37a888"}
+[info] i  hosting[postergenius-14856]: Serving hosting files from: build {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1mbuild\u001b[22m"}}
+[info] +  hosting[postergenius-14856]: Local server: http://127.0.0.1:5000 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://127.0.0.1:5000\u001b[22m\u001b[24m"}}
+[debug] [2023-07-06T00:27:25.612Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2023-07-06T00:27:25.612Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2023-07-06T00:27:25.613Z] Starting Emulator UI with command {"binary":"node","args":["C:\\Users\\Kalee\\.cache\\firebase\\emulators\\ui-v1.11.6\\server\\server.js"],"optionalArgs":[],"joinArgs":false} {"metadata":{"emulator":{"name":"ui"},"message":"Starting Emulator UI with command {\"binary\":\"node\",\"args\":[\"C:\\\\Users\\\\Kalee\\\\.cache\\\\firebase\\\\emulators\\\\ui-v1.11.6\\\\server\\\\server.js\"],\"optionalArgs\":[],\"joinArgs\":false}"}}
+[info] i  ui: Emulator UI logging to ui-debug.log {"metadata":{"emulator":{"name":"ui"},"message":"Emulator UI logging to \u001b[1mui-debug.log\u001b[22m"}}
+[debug] [2023-07-06T00:27:25.865Z] Web / API server started at 127.0.0.1:4001
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at 127.0.0.1:4001\n"}}
+[debug] [2023-07-06T00:27:25.866Z] Web / API server started at ::1:4001
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at ::1:4001\n"}}
+[info] i  functions: Watching "C:\Users\Kalee\Documents\2023 personal projects\postergenius\functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"C:\\Users\\Kalee\\Documents\\2023 personal projects\\postergenius\\functions\" for Cloud Functions..."}}
+[debug] [2023-07-06T00:27:25.898Z] Validating nodejs source
+[debug] [2023-07-06T00:27:29.063Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "18"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "firebase-admin": "^11.9.0",
+    "firebase-functions": "^4.4.1",
+    "save": "^2.9.0",
+    "stripe": "^12.10.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.15.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^3.1.0"
+  },
+  "private": true
+}
+[debug] [2023-07-06T00:27:29.063Z] Building nodejs source
+[debug] [2023-07-06T00:27:29.064Z] Failed to find version of module node: reached end of search path C:\Users\Kalee\Documents\2023 personal projects\postergenius\functions\node_modules
+[warn] !  functions: Your requested "node" version "18" doesn't match your global version "16". Using node@16 from host. 
+[debug] [2023-07-06T00:27:29.069Z] Could not find functions.yaml. Must use http discovery
+[debug] [2023-07-06T00:27:29.084Z] Found firebase-functions binary at 'C:\Users\Kalee\Documents\2023 personal projects\postergenius\functions\node_modules\.bin\firebase-functions'
+[info] Serving at port 8362
+
+[debug] [2023-07-06T00:27:30.766Z] Got response from /__/functions.yaml {"endpoints":{"api":{"platform":"gcfv1","availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"serviceAccountEmail":null,"vpc":null,"httpsTrigger":{},"entryPoint":"api"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[info] shutdown requested via /__/quitquitquit
+
+[info] +  functions: Loaded functions definitions from source: api. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: api."}}
+[info] +  functions[us-central1-api]: http function initialized (http://127.0.0.1:5001/postergenius-14856/us-central1/api). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://127.0.0.1:5001/postergenius-14856/us-central1/api)."}}
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://127.0.0.1:4001/               │
+└─────────────────────────────────────────────────────────────┘
+
+┌───────────┬────────────────┬─────────────────────────────────┐
+│ Emulator  │ Host:Port      │ View in Emulator UI             │
+├───────────┼────────────────┼─────────────────────────────────┤
+│ Functions │ 127.0.0.1:5001 │ http://127.0.0.1:4001/functions │
+├───────────┼────────────────┼─────────────────────────────────┤
+│ Hosting   │ 127.0.0.1:5000 │ n/a                             │
+└───────────┴────────────────┴─────────────────────────────────┘
+  Emulator Hub running at 127.0.0.1:4400
+  Other reserved ports: 4500
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
