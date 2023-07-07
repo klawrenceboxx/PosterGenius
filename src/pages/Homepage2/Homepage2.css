@@ -17,8 +17,8 @@ h1 {
   font-family: "Poppins", sans-serif;
   font-style: normal;
   font-weight: 700;
-  font-size: 68px;
-  line-height: 80px;
+  font-size: 3rem;
+  line-height: 4rem;
   letter-spacing: -0.015em;
   color: #150826;
   /* border: 1px solid #000; */
@@ -35,9 +35,13 @@ p {
   width: 80%;
 }
 
+img {
+  box-shadow: 3px 5px 15px rgba(0, 0, 0, 0.25);
+}
+
 .hero {
-  padding-top: 8rem;
-  padding-bottom: 4rem;
+  padding-top: 6rem;
+  padding-bottom: 3rem;
   border-bottom: 1px solid #0000002b;
 }
 
@@ -57,7 +61,7 @@ p {
 }
 
 .container__right {
-  padding: 0 6rem;
+  padding: 0 2rem;
 
   /* border: 1px solid #000; */
   width: 60%;
@@ -76,12 +80,14 @@ p {
 
 .hero .container__right img:nth-child(1) {
   /* Move the first image up and to the left. */
+  width: 240px;
   margin-top: -100px;
   margin-left: -20px;
 }
 
 .hero .container__right img:nth-child(2) {
   /* Move the second image up and to the left. */
+  width: 240px;
   margin-top: 40px;
   margin-left: -20px;
   z-index: 3;
@@ -89,33 +95,80 @@ p {
 
 .hero .container__right img:nth-child(3) {
   /* Move the third image up and to the left even further. */
+  width: 240px;
   margin-top: -100px;
   margin-left: -20px;
 }
 
 .popular .container__left {
+  width: 60%;
   display: flex;
   align-items: center;
   justify-content: center;
+  /* border: 1px solid #000; */
 }
 
 .popular .container__left img:nth-child(1) {
   /* Move the first image up and to the left. */
+  width: 480px;
   margin-top: -100px;
-  margin-right: -20px;
+  margin-right: -80px;
+  box-shadow: 3px 5px 15px rgba(0, 0, 0, 0.25);
 }
 
 .popular .container__left img:nth-child(2) {
   /* Move the second image down and to the left. */
+  width: 240px;
+
   margin-top: 40px;
-  margin-left: -20px;
+  margin-left: -10px;
   z-index: 1;
+  box-shadow: 3px 5px 15px rgba(0, 0, 0, 0.25);
+}
+
+.preview {
+  padding-top: 2rem;
+  padding-bottom: 0rem;
+  border-bottom: 1px solid #0000002b;
+  /* border: 1px solid #000; */
+}
+
+.preview__container {
+  margin: 0 auto;
+  max-width: 1240px;
+  /* border: 1px solid #000; */
+}
+
+.preview__gallery {
+  padding: 40px 208px;
+  gap: 50px;
+  margin: 0 auto;
+}
+
+.preview__container h1 {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.poster__gallery img {
+  width: 240px;
+  object-fit: cover;
+  border-radius: 2px;
+  margin-bottom: 60px;
+  box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.2);
+
+  /* border: 1px solid #000; */
 }
 
 .promotion .container__right {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.promotion .container__right img {
+  width: 600px;
+  box-shadow: 3px 5px 15px rgba(0, 0, 0, 0.25);
 }
 
 .btn {
@@ -138,7 +191,7 @@ p {
 }
 
 .promotion {
-  padding-top: 8rem;
+  padding-top: 4rem;
   padding-bottom: 4rem;
   border-bottom: 1px solid #0000002b;
 }

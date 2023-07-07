@@ -1,11 +1,17 @@
 import React from "react";
 import "./Homepage2.css";
-import Miles from "../../DesignAssets/images/Miles_Morales.png";
-import Tony from "../../DesignAssets/images/Tony_Stark.png";
-import Kang from "../../DesignAssets/images/Kang.png";
-import Goku from "../../DesignAssets/images/Goku.png";
-import Landscape from "../../DesignAssets/images/Landscape.png";
-import Kang2 from "../../DesignAssets/images/Kang2.png";
+import Lion from "../../DesignAssets/images/Lion.png";
+import FlowerBird from "../../DesignAssets/images/FlowerBird.png";
+import Butterfly from "../../DesignAssets/images/Butterfly.png";
+import BlackHorse from "../../DesignAssets/images/BlackHorse.png";
+import Roses from "../../DesignAssets/images/Roses.png";
+import Peacock from "../../DesignAssets/images/Peacock.png";
+import Fox from "../../DesignAssets/images/Fox.png";
+import Sunflower from "../../DesignAssets/images/Sunflower.png";
+import doves from "../../DesignAssets/images/doves.png";
+import Dog from "../../DesignAssets/images/Dog.png";
+import BlueButterfly from "../../DesignAssets/images/BlueButterfly.png";
+import Cat from "../../DesignAssets/images/Cat.png";
 
 function Homepage2() {
   return (
@@ -23,9 +29,9 @@ function Homepage2() {
             </a>
           </div>
           <div className="container__right">
-            <img src={Miles} alt="" />
-            <img src={Tony} alt="" />
-            <img src={Kang} alt="" />
+            <img src={Butterfly} alt="" />
+            <img src={Lion} alt="" />
+            <img src={FlowerBird} alt="" />
             <div></div>
             <div></div>
           </div>
@@ -39,11 +45,25 @@ function Homepage2() {
         <div className="hero__background hero__circle7"></div> */}
       </section>
 
+      <section className="preview">
+        <div className="preview__container">
+          <h1>A FEW OF OUR FAVOURITES</h1>
+          <div className="poster__gallery preview__gallery">
+            <img src={Fox} alt="" />
+            <img src={Sunflower} alt="" />
+            <img src={doves} alt="" />
+            <img src={Dog} alt="" />
+            <img src={BlueButterfly} alt="" />
+            <img src={Cat} alt="" />
+          </div>
+        </div>
+      </section>
+
       <section className="popular">
         <div className="container">
           <div className="container__left">
-            <img src={Landscape} alt="" />
-            <img src={Goku} alt="" />
+            <img src={Roses} alt="" />
+            <img src={BlackHorse} alt="" />
             {/* <img src="" alt="" /> */}
             <div></div>
             <div></div>
@@ -74,7 +94,7 @@ function Homepage2() {
             </a>
           </div>
           <div className="container__right">
-            <img src={Kang2} alt="" />
+            <img src={Peacock} alt="" />
             {/* <img src="" alt="" />
             <img src="" alt="" /> */}
             <div></div>
