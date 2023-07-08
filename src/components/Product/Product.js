@@ -29,15 +29,15 @@ function Product({id, title, image, price}) {
         <img className="product__image" src={image} alt="Posters" />
       </div>
       <div className="product__Bottom">
-        <div className="product__Bottom--line1">
+        {/* <div className="product__Bottom--line1">
           <p>{title}</p>
           <img src={Heart} alt="heart" />
-        </div>
+        </div> */}
         <div className="product__Bottom--line2">
-          <p>${price} CAD</p>
-          <button onClick={addToBasket} className="Product__button">
+          {/* <p>${price} CAD</p> */}
+          {/* <button onClick={addToBasket} className="Product__button">
             Add to Basket
-          </button>
+          </button> */}
         </div>
       </div>
     </div>

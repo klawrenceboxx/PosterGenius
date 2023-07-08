@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import {storage, db} from "../../firebase";
 import {ref, listAll, getDownloadURL} from "firebase/storage";
 // import {db} from "../../firebase";
-import Landscape from "../../DesignAssets/images/Landscape.png";
+import Mountains from "../../DesignAssets/images/Mountains.png";
 import "./Posters.css";
 import "../../DesignAssets/fonts/Poppins-Regular.ttf";
 import "../../DesignAssets/fonts/RobotoFlex-Regular.ttf";
@@ -62,7 +62,7 @@ function Posters() {
             </p>
           </div>
           <div className="container__right ias">
-            <img src={Landscape} alt="frosty forest" />
+            <img src={Mountains} alt="frosty forest" />
           </div>
         </div>
       </div>
