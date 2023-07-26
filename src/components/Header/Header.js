@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import {auth} from "../../firebase";
 import {Link} from "react-router-dom";
 import {useStateValue} from "../StateProvider";
 import "./Header.css";
@@ -10,7 +11,13 @@ import "../../DesignAssets/fonts/Poppins-Regular.ttf";
 //rfce, BEM convention
 
 function Header() {
-  const [{basket}, dispatch] = useStateValue(); //useState is a hook, the [] is the initial value
+  const [{basket, user}, dispatch] = useStateValue(); //useState is a hook, the [] is the initial value
+
+  const handleAuthenticaton = () => {
+    if (user) {
+      auth.signOut();
+    }
+  };
 
   return (
     <header>
@@ -54,7 +61,17 @@ function Header() {
 
         <div className="nav__list">
           <div className="login">
-            <a href="">Sign in</a>
+            <Link to={!user && "/login2"}>
+              {/* <Link to="/login"> */}
+              <div onClick={handleAuthenticaton}>
+                <span className="header__optionLineOne">
+                  Hello{!user ? ", " : user.email}
+                </span>
+                <span className="header__optionLineTwo">
+                  {user ? user.email : "sign In"}
+                </span>
+              </div>
+            </Link>
           </div>
           <div className="cart" className="nav__item">
             <Link to="/checkout" className="cart__link">

@@ -17,6 +17,8 @@ import {Elements, useElements, useStripe} from "@stripe/react-stripe-js";
 import Homepage2 from "../pages/Homepage2/Homepage2";
 import Orders from "../pages/Orders/Orders";
 import Login from "../pages/Login/Login";
+import Login2 from "../pages/Login/Login2";
+import Signup from "../pages/Signup/Signup";
 
 const promise = loadStripe(
   "pk_test_51N5z6KKWLTAcuCBtS9mA00hfM9jURZnEwCw6lhqrrXrayh1SogeNQUek4vzgIbyIGv6I2C2DL7ZxbIshY5h1kTZd00UJtbwvNO"
@@ -60,6 +62,22 @@ function App() {
               element={
                 <>
                   <Login />
+                </>
+              }
+            />
+            <Route
+              path="/login2"
+              element={
+                <>
+                  <Login2 />
+                </>
+              }
+            />
+            <Route
+              path="/Signup"
+              element={
+                <>
+                  <Signup />
                 </>
               }
             />

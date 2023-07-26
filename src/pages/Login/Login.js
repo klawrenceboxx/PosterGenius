@@ -17,22 +17,17 @@ function Login() {
   const signIn = (e) => {
     e.preventDefault(); //stops the refresh
 
-    const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
         navigate("/");
       })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-      });
+      .catch((error) => alert(error.message));
   };
 
   const register = (e) => {
     e.preventDefault(); //stops the refresh
 
-    const auth = getAuth();
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         //it successfully created a new user with email and password
@@ -43,11 +38,7 @@ function Login() {
           navigate("/");
         }
       })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // ..
-      });
+      .catch((error) => alert(error.message));
   };
 
   return (
@@ -56,7 +47,7 @@ function Login() {
         <img className="logo__img" src={Logo} alt="AI-Generated Posters Logo" />
       </div> */}
 
-      <div className="login__container">
+      <div className="login__container1">
         <h1>Sign In</h1>
 
         <form className="signIn">

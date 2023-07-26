@@ -21,6 +21,7 @@ header {
   background-color: #fff;
   border-bottom: 1px solid #0000002b;
   z-index: 999;
+  padding: 1em 0;
 }
 
 main {
@@ -80,6 +81,7 @@ nav {
   align-items: center;
   width: 60%;
   min-width: 200px;
+  margin: 0 1em;
   /* border: 1px solid #000; */
 }
 
@@ -90,6 +92,9 @@ nav {
   background-repeat: no-repeat;
   background-position: right 2em center;
   background-size: 1.5rem;
+  border-radius: 7px;
+  border: 0.5px solid var(--black-50, rgba(21, 8, 38, 0.274));
+  padding-left: 1em;
 }
 
 .login {
