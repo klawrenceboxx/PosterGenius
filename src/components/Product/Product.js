@@ -27,18 +27,13 @@ function Product({id, title, image, price}) {
     <div className="product__container">
       <div className="product__top">
         <img className="product__image" src={image} alt="Posters" />
-      </div>
-      <div className="product__Bottom">
-        {/* <div className="product__Bottom--line1">
-          <p>{title}</p>
-          <img src={Heart} alt="heart" />
+        {/* hrtr */}
+        {/* <div className="product__strip">
+          <button onClick={addToBasket} className="Product__button">
+            <h6>Add to Cart</h6>
+          </button>
         </div> */}
-        <div className="product__Bottom--line2">
-          {/* <p>${price} CAD</p> */}
-          {/* <button onClick={addToBasket} className="Product__button">
-            Add to Basket
-          </button> */}
-        </div>
+        {/*  */}
       </div>
     </div>
   );

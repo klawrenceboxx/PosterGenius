@@ -13,15 +13,21 @@ function Login2() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordError, setPasswordError] = useState("");
 
   const signIn = (e) => {
     e.preventDefault(); //stops the refresh
 
     signInWithEmailAndPassword(auth, email, password)
       .then((auth) => {
+        console.log(auth);
+
         navigate("/");
       })
-      .catch((error) => alert(error.message));
+      .catch((error) => {
+        alert(error.message);
+        setPasswordError("Password was incorrect");
+      });
   };
 
   return (
@@ -41,10 +47,15 @@ function Login2() {
             <input
               type="password"
               placeholder="Enter your password"
-              className="login__input"
+              // className="login__input"
+              className={`login__input ${
+                passwordError === "Password was incorrect" ? "input-error" : ""
+              }`}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
+            {passwordError && <p className="error-message">{passwordError}</p>}
+
             <a href="#">Forgot password?</a>
             <button type="submit" onClick={signIn} className="login__button">
               Continue

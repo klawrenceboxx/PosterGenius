@@ -1,4 +1,5 @@
 import React from "react";
+import {useNavigate} from "react-router-dom";
 import "./PosterInfo.css";
 import dog from "../../DesignAssets/images_posters/dog.png";
 import "../../DesignAssets/fonts/Poppins-Regular.ttf";
@@ -7,16 +8,125 @@ import {getDoc, doc, onSnapshot} from "firebase/firestore";
 import {db} from "../../firebase";
 import {useState, useEffect, useMemo} from "react";
 import {useStateValue} from "../../components/StateProvider";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";
+import ImageGallery from "../../components/ImageGallery";
+import {collection, getDocs} from "firebase/firestore";
 
-// import { Link } from "react-router-dom";
+const orientations = [
+  {label: "PORTRAIT", value: "portrait"},
+  {label: "LANDSCAPE", value: "landscape"},
+  {label: "SQUARE", value: "square"},
+];
+
+const materials = [
+  {label: "PREMIUM MATTE", value: "premium-matte"},
+  {label: "PREMIUM LUSTER", value: "premium-luster"},
+];
+// const frames = ["NO FRAME", "BLACK", "WHITE", "NATURAL", "WALNUT"];
+// const frames = [
+//   {label: "NO FRAME", value: "no-frame"},
+//   {label: "BLACK", value: "black"},
+//   {label: "WHITE", value: "white"},
+//   {label: "RED OAK", value: "red-oak"},
+// ];
 
 function PosterInfo() {
+  const navigate = useNavigate();
   const {id} = useParams();
   const [data, setData] = useState(null); // Initialize a state variable to store the document data
   const [{basket}, dispatch] = useStateValue();
+  const [activeTab, setActiveTab] = useState("productDetails");
+
+  // button options
+  const [selectedOrientation, setSelectedOrientation] = useState("portrait");
+  const [selectedSize, setSelectedSize] = useState('12"x18"');
+  const [selectedMaterial, setSelectedMaterial] = useState("premium-matte");
+  const [selectedFrame, setSelectedFrame] = useState("");
+  const [sizes, setSizes] = useState([]);
+  const [frames, setFrames] = useState([]);
+
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  // New state to store the pricing data fetched from Firebase
+  const [pricingData, setPricingData] = useState([]);
+
+  useEffect(() => {
+    const fetchPricingData = async () => {
+      const pricingCollection = collection(db, "prices");
+      const pricingSnapshot = await getDocs(pricingCollection);
+      const dataList = pricingSnapshot.docs.map((doc) => {
+        const docData = doc.data();
+        return {
+          id: doc.id,
+          startPrice: docData.basePrice,
+          medium: docData.medium,
+          large: docData.large,
+          xlarge: docData.xlarge,
+          mediumFrame: docData.mediumFrame,
+          largeFrame: docData.largeFrame,
+          xlargeFrame: docData.xlargeFrame,
+        };
+      });
+      setPricingData(dataList);
+
+      if (dataList.length > 0) {
+        setSizes([
+          {
+            label: '12"x18"',
+            value: '12"x18"',
+            dollar: dataList[0].medium,
+          },
+          {
+            label: '18"x24"',
+            value: '18"x24"',
+            dollar: dataList[0].large,
+          },
+          {
+            label: '24"x36"',
+            value: '24"x36"',
+            dollar: dataList[0].xlarge,
+          },
+        ]);
+        setFrames([
+          {
+            label: "NO FRAME",
+            value: "no-frame",
+            medium: 0,
+            large: 0,
+            xlarge: 0,
+          },
+          {
+            label: "BLACK",
+            value: "black",
+            medium: dataList[0].mediumFrame,
+            large: dataList[0].largeFrame,
+            xlarge: dataList[0].xlargeFrame,
+          },
+          {
+            label: "WHITE",
+            value: "white",
+            medium: dataList[0].mediumFrame,
+            large: dataList[0].largeFrame,
+            xlarge: dataList[0].xlargeFrame,
+          },
+          {
+            label: "RED OAK",
+            value: "red-oak",
+            medium: dataList[0].mediumFrame,
+            large: dataList[0].largeFrame,
+            xlarge: dataList[0].xlargeFrame,
+          },
+        ]);
+        setTotalPrice(dataList[0].startPrice);
+      }
+    };
+
+    fetchPricingData();
+  }, []);
 
   // get a single document
-  const docRef = useMemo(() => doc(db, "Posters", id), [id]);
+  const docRef = useMemo(() => doc(db, "posters", id), [id]);
 
   useEffect(() => {
     const unsubscribe = onSnapshot(docRef, (doc) => {
@@ -32,6 +142,31 @@ function PosterInfo() {
     return () => unsubscribe();
   }, [docRef]);
 
+  const handleSizeChange = (sizeValue) => {
+    // Check if pricingData has data and if the first item is defined
+
+    if (pricingData.length === 0 || !pricingData[0]) return;
+
+    const size = sizes.find((s) => s.value === sizeValue);
+    const sizePriceAddition = size ? size.dollar : 0;
+
+    const frame = frames.find((f) => f.value === selectedFrame);
+    let framePriceAddition = 0;
+    if (frame) {
+      if (sizeValue === '12"x18"') framePriceAddition = frame.medium;
+      if (sizeValue === '18"x24"') framePriceAddition = frame.large;
+      if (sizeValue === '24"x36"') framePriceAddition = frame.xlarge;
+    }
+
+    setTotalPrice(
+      pricingData[0].startPrice + sizePriceAddition + framePriceAddition
+    );
+  };
+
+  useEffect(() => {
+    handleSizeChange(selectedSize);
+  }, [selectedFrame]);
+
   if (!data) {
     // Show loading state while the data is being fetched
     return <div>Loading...</div>;
@@ -45,190 +180,249 @@ function PosterInfo() {
       type: "ADD_TO_BASKET",
       item: {
         id: data.id,
-        title: data.Title,
+        title: data.title,
         image: data.url,
-        price: data.Price,
+        price: totalPrice,
       },
     });
   };
 
+  const element = <FontAwesomeIcon icon={faArrowLeft} />;
+  const galleryImages = data.galleryImages.map((url, index) => ({
+    id: index,
+    url,
+  }));
+
+  function ButtonGroup({items, selectedValue, setSelectedValue, onChange}) {
+    return (
+      <div>
+        {items.map((item) => (
+          <button
+            key={item.value}
+            className={`button__Detail ${
+              selectedValue === item.value ? "button__Detail--active" : ""
+            }`}
+            onClick={() => {
+              setSelectedValue(item.value);
+              if (onChange) onChange(item.value);
+            }}
+          >
+            {item.label}
+          </button>
+        ))}
+      </div>
+    );
+  }
+
   return (
-    <div>
-      <div className="product__detail__container">
-        <div className="images">
-          <div className="small__images__container">
-            <img src={data.url} alt="" className="small__image" />
-            <img src={data.url} alt="" className="small__image" />
-            <img src={data.url} alt="" className="small__image" />
-            <img src={data.url} alt="" className="small__image" />
+    <div className="product__detail">
+      <section className="hero__detail">
+        <div className="button-and-container-wrapper">
+          <button
+            className="button__Detail"
+            onClick={() => navigate("/posters")}
+          >
+            {element} All Posters
+          </button>
+          <div className="container__Detail">
+            <div className="left__Detail">
+              <ImageGallery images={galleryImages} />
+            </div>
+            <div className="right__Detail">
+              <h1>{data.title}</h1>
+              <div>
+                <div className="right__Detail__options">
+                  <h6>ORIENTATION</h6>
+                  {/* `...` (template string) allow embedded expressiond ehivh can be included inside `${}`  */}
+                  {/* condition ? value_if_true : value_if_false */}
+                  <ButtonGroup
+                    items={orientations}
+                    selectedValue={selectedOrientation}
+                    setSelectedValue={setSelectedOrientation}
+                  />
+                </div>
+                <div className="right__Detail__options">
+                  <h6>SIZE (Inch)</h6>
+                  <ButtonGroup
+                    items={sizes}
+                    selectedValue={selectedSize}
+                    setSelectedValue={setSelectedSize}
+                    onChange={handleSizeChange}
+                  />
+                </div>
+                <div className="right__Detail__options">
+                  <h6>MATERIAL</h6>
+                  <ButtonGroup
+                    items={materials}
+                    selectedValue={selectedMaterial}
+                    setSelectedValue={setSelectedMaterial}
+                  />
+                </div>
+                <div className="right__Detail__options">
+                  <h6>FRAMING</h6>
+                  <ButtonGroup
+                    items={frames}
+                    selectedValue={selectedFrame}
+                    setSelectedValue={setSelectedFrame}
+                  />
+                </div>
+              </div>
+              <button className="button__buy" onClick={addToBasket}>
+                ${totalPrice} ADD TO CART
+              </button>
+
+              {/* 7-day money back guarantee */}
+            </div>
           </div>
-          <div className="image__container">
-            <img src={data.url} alt="" className="product__detail__image" />
+
+          {/* <div className="product__detail__description">
+
+            <div className="line"></div>
+            <p>size (inch)</p>
+            <ul>
+              <li>18.0" x 24.0"</li>
+              <li>High-quality paper, vibrant colors</li>
+              <li>printed with shiny, holographic foil</li>
+              <li>frame not included</li>
+            </ul>
+            <button onClick={addToBasket}>Add to Cart</button>
+          </div> */}
+        </div>
+      </section>
+
+      {/* <section className="Features__Detail">
+        <div className="Features__container">
+          <h3>Special Features</h3>
+          <div className="Features__Detail__container">
+            <div className="Features__Detail__container__feature1">
+              <p>Shiny Details</p>
+            </div>
+            <div className="Features__Detail__container__feature2">
+              <p>High-quality print</p>
+            </div>
+            <div className="Features__Detail__container__feature3">
+              <p>Elaborate Illustrations</p>
+            </div>
+            <div className="Features__Detail__container__feature4">
+              <p>Extra heavy Paper</p>
+            </div>
           </div>
         </div>
-        <div className="product__detail__description">
-          {/* <h1>{name}</h1> */}
-          {/* <p>{details}</p> */}
-          {/* <h1>Dog</h1> */}
-          <h1>{data.Title}</h1>
-          <h3>CAD ${data.Price}</h3>
-          <div className="line"></div>
-          <p>size (inch)</p>
-          <ul>
-            <li>18.0" x 24.0"</li>
-            <li>High-quality paper, vibrant colors</li>
-            <li>printed with shiny, holographic foil</li>
-            <li>frame not included</li>
-          </ul>
-          <button onClick={addToBasket}>Add to Cart</button>
+      </section> */}
+
+      {/* <section className="FAQ__Detail">
+        <div>
+          <div>
+            <h2
+              style={{
+                textDecoration:
+                  activeTab === "productDetails" ? "underline" : "none",
+                cursor: "pointer",
+                display: "inline-block",
+                marginRight: "20px", // adjust this value for desired spacing
+              }}
+              onClick={() => setActiveTab("productDetails")}
+            >
+              Product Details
+            </h2>
+            <h2
+              style={{
+                textDecoration: activeTab === "faq" ? "underline" : "none",
+                cursor: "pointer",
+                display: "inline-block",
+                marginRight: "20px", // adjust this value for desired spacing
+              }}
+              onClick={() => setActiveTab("faq")}
+            >
+              FAQ
+            </h2>
+          </div>
+          {activeTab === "productDetails" && (
+            <div>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+                vitae diam eu massa aliquam aliquet. Sed euismod, nisl quis
+                tincidunt aliquam, nunc nibh aliquet nunc, vitae aliquam nisl
+                nunc vitae mauris. Donec euismod, nisl quis tincidunt aliquam,
+                nunc nibh aliquet nunc, vitae aliquam nisl nunc vitae mauris.
+                Donec euismod, nisl quis tincidunt aliquam, nunc nibh aliquet
+              </p>
+            </div>
+          )}
+
+          {activeTab === "faq" && (
+            <div>
+              <p>
+                Donec euismod, nisl quis tincidunt aliquam, nunc nibh aliquet
+                nunc, vitae aliquam nisl nunc vitae mauris. Donec euismod, nisl
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+                vitae diam eu massa aliquam aliquet. Sed euismod, nisl quis
+                tincidunt aliquam, nunc nibh aliquet nunc, vitae aliquam nisl
+                nunc vitae mauris. Donec euismod, nisl quis tincidunt aliquam,
+                nunc nibh aliquet nunc, vitae aliquam nisl nunc vitae mauris.
+              </p>
+            </div>
+          )}
         </div>
-      </div>
-      <div className="product__detail">
-        <h2>Product Details</h2>
-        <br />
-        <p>
-          This is the perfect Marvel poster for any Kang the conqueror fans.
-          It’s a classic canvas print in a vertical rectangle shape with oil
-          paint supports. it’s perfect for any home or office and would make a
-          great addition to any Marvel lover’s wall Are you a Marvel fan? if you
-          are, this Kang the conqueror poster is right for you! this will bring
-          warmth to your walls. we have different sizes that will definitely
-          match your style!
-        </p>
-      </div>
-      <div className="maylike-products-wrapper">
-        <h2>You might also like</h2>
-        <div className="marquee">
-          <div className="maylike-products-container track">
-            {/* {products.map((item) => (
-                <Product key={item._id} product={item} />
-              ))} */}
+      </section> */}
+
+      {/* <section className="Promotion__Detail">
+        <div className="promotion__container">
+          <div className="promotion__Detail__left">
+          </div>
+          <div className="promotion__Detail__right">
+            <h1>Heading</h1>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+              vitae diam eu massa aliquam aliquet. Sed euismod, nisl quis
+              tincidunt aliquam, nunc nibh aliquet nunc, vitae aliquam nisl nunc
+              vitae mauris. Donec euismod, nisl quis tincidunt aliquam,
+            </p>
           </div>
         </div>
-      </div>
+      </section> */}
+
+      {/* <section className="Suggested__Detail">
+        <div className="Features__container">
+          <h1>You Might Also Like</h1>
+          <div className="Suggested__Detail__container">
+            <div className="Suggested__Detail__container__item1"> 
+              <h3>Title</h3>
+              <h3>Price</h3>
+            </div>
+            <div className="Suggested__Detail__container__item2">
+              <img src={koi} alt="" />
+              <h3>Title</h3>
+              <h3>Price</h3>
+            </div>
+            <div className="Suggested__Detail__container__item3">
+              <h3>Title</h3>
+              <h3>Price</h3>
+            </div>
+            <div className="Suggested__Detail__container__item4">
+              <h3>Title</h3>
+              <h3>Price</h3>
+            </div>
+          </div>
+        </div>
+      </section> */}
+
+      {/* <section className="Newsletter__Detail">
+        <div className="newsletter__container">
+          <h1>Join The PosterG Crew</h1>
+          <div>
+            <p>
+              Be the first to know about new products, special releases and much
+              more!
+            </p>
+            <button className="button__Detail">
+              sign up to our newsletter
+            </button>
+          </div>
+        </div>
+      </section> */}
     </div>
   );
 }
 
 export default PosterInfo;
-
-// import React, { useState } from 'react';
-// import { AiOutlineMinus, AiOutlinePlus, AiFillStar, AiOutlineStar } from 'react-icons/ai';
-
-// import { client, urlFor } from '../../lib/client';
-// import { Product } from '../../components';
-// import { useStateContext } from '../../context/StateContext';
-
-// const ProductDetails = ({ product, products }) => {
-//   const { image, name, details, price } = product;
-//   const [index, setIndex] = useState(0);
-//   const { decQty, incQty, qty, onAdd, setShowCart } = useStateContext();
-
-//   const handleBuyNow = () => {
-//     onAdd(product, qty);
-
-//     setShowCart(true);
-//   }
-
-//   return (
-//     <div>
-//       <div className="product-detail-container">
-//         <div>
-//           <div className="image-container">
-//             <img src={urlFor(image && image[index])} className="product-detail-image" />
-//           </div>
-//           <div className="small-images-container">
-//             {image?.map((item, i) => (
-//               <img
-//                 key={i}
-//                 src={urlFor(item)}
-//                 className={i === index ? 'small-image selected-image' : 'small-image'}
-//                 onMouseEnter={() => setIndex(i)}
-//               />
-//             ))}
-//           </div>
-//         </div>
-
-//         <div className="product-detail-desc">
-//           <h1>{name}</h1>
-//           <div className="reviews">
-//             <div>
-//               <AiFillStar />
-//               <AiFillStar />
-//               <AiFillStar />
-//               <AiFillStar />
-//               <AiOutlineStar />
-//             </div>
-//             <p>
-//               (20)
-//             </p>
-//           </div>
-//           <h4>Details: </h4>
-//           <p>{details}</p>
-//           <p className="price">${price}</p>
-//           <div className="quantity">
-//             <h3>Quantity:</h3>
-//             <p className="quantity-desc">
-//               <span className="minus" onClick={decQty}><AiOutlineMinus /></span>
-//               <span className="num">{qty}</span>
-//               <span className="plus" onClick={incQty}><AiOutlinePlus /></span>
-//             </p>
-//           </div>
-//           <div className="buttons">
-//             <button type="button" className="add-to-cart" onClick={() => onAdd(product, qty)}>Add to Cart</button>
-//             <button type="button" className="buy-now" onClick={handleBuyNow}>Buy Now</button>
-//           </div>
-//         </div>
-//       </div>
-
-//       <div className="maylike-products-wrapper">
-//           <h2>You may also like</h2>
-//           <div className="marquee">
-//             <div className="maylike-products-container track">
-//               {products.map((item) => (
-//                 <Product key={item._id} product={item} />
-//               ))}
-//             </div>
-//           </div>
-//       </div>
-//     </div>
-//   )
-// }
-
-// export const getStaticPaths = async () => {
-//   const query = `*[_type == "product"] {
-//     slug {
-//       current
-//     }
-//   }
-//   `;
-
-//   const products = await client.fetch(query);
-
-//   const paths = products.map((product) => ({
-//     params: {
-//       slug: product.slug.current
-//     }
-//   }));
-
-//   return {
-//     paths,
-//     fallback: 'blocking'
-//   }
-// }
-
-// export const getStaticProps = async ({ params: { slug }}) => {
-//   const query = `*[_type == "product" && slug.current == '${slug}'][0]`;
-//   const productsQuery = '*[_type == "product"]'
-
-//   const product = await client.fetch(query);
-//   const products = await client.fetch(productsQuery);
-
-//   console.log(product);
-
-//   return {
-//     props: { products, product }
-//   }
-// }
-
-// export default ProductDetails

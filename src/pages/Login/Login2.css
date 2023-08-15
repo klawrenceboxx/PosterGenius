@@ -39,8 +39,21 @@
   border: 1px solid #ccc;
   padding: 1rem;
   margin: 1rem 0;
-  border-radius: 5px;
+  border-radius: 8px;
   width: 100%;
+}
+
+/* .login__input:last-of-type {
+  margin-bottom: 0;
+} */
+
+.login__input:hover {
+  border: 1px solid #150826;
+}
+
+.input-error {
+  border: 2px solid #ba1a2e;
+  background-color: #fddcd8;
 }
 
 .login__button {
@@ -69,4 +82,13 @@
   text-align: center;
   border: 0.5px solid var(--black-50, rgba(21, 8, 38, 0.274));
   border-radius: 7px;
+}
+
+.error-message {
+  color: #ba1a2e;
+  font-size: 18px;
+  align-items: center;
+  margin: 0 auto;
+  padding-top: 0;
+  padding-bottom: 1rem;
 }

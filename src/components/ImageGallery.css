@@ -1,0 +1,34 @@
+.imageGallery__current {
+  width: 500px;
+  object-fit: cover;
+  border-radius: 2px;
+  border: 1px solid #00000015;
+}
+
+.imageGallery__thumbnail {
+  width: 100%;
+  max-width: 100px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 1px solid #00000015;
+}
+
+.imageGallery__container {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 2rem;
+  /* border: 1px solid #000; */
+}
+
+.imageGallery__list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* border: 1px solid #000; */
+  gap: 1rem;
+}
+
+/* img {
+  max-width: 100%;
+  height: auto;
+} */

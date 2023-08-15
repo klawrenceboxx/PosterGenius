@@ -100,21 +100,18 @@ nav {
 .login {
   font-family: "Poppins";
   font-style: normal;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 24px;
-  display: flex;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  /* display: flex;
   align-items: center;
-  text-align: center;
+  text-align: center; */
   color: #ffffff;
+  border: transparent;
   background: linear-gradient(90deg, #b882ff 0%, #8e35ff 100%);
-  padding: 0.5em 3em;
+  padding: 0.5em 1.5em;
   border-radius: 5px;
-}
-
-.login a {
-  color: #fff;
-  text-decoration: none;
+  cursor: pointer;
 }
 
 .cart {
@@ -147,4 +144,18 @@ nav {
   align-items: center;
   text-decoration: none;
   color: inherit; /* This will inherit the color of the parent element and override the default blue color of the link */
+}
+
+.header__optionLineOne,
+.header__optionLineTwo {
+  display: block;
+}
+
+.pay {
+  margin-top: 1em;
+  height: 64px;
+  padding: 1rem;
+  border: 1px solid gainsboro;
+  border-radius: 5px;
+  background-color: white;
 }

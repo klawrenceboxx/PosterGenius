@@ -32,7 +32,12 @@ function Subtotal() {
         thousandSeparator={true}
         prefix={"$"}
       />
-      <button onClick={(e) => navigate("/payment")}>Proceed to Checkout</button>{" "}
+      <button
+        className="checkout__buttons"
+        onClick={(e) => navigate("/payment")}
+      >
+        <h6>Proceed to Checkout</h6>
+      </button>{" "}
       {/* this button will take us to the payment page */}
     </div>
   );

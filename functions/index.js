@@ -2,12 +2,12 @@
 /* prettier-ignore */
 
 require("dotenv").config();
+
 const functions = require("firebase-functions");
 const stripe = require("stripe")(
-    "sk_test_51N5z6KKWLTAcuCBt0XFtbZp5MPLUMzUr2eCpF5lt2lNG62S7ZThlIu4E5vlz7Sem0iRl5r5uWwlL3oPjKigY4PRr00qvYwJtUR",
+  "sk_test_51N5z6KKWLTAcuCBt0XFtbZp5MPLUMzUr2eCpF5lt2lNG62S7ZThlIu4E5vlz7Sem0iRl5r5uWwlL3oPjKigY4PRr00qvYwJtUR"
 );
 const express = require("express");
-
 const app = express();
 const cors = require("cors");
 

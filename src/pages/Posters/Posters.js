@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import {storage, db} from "../../firebase";
 import {ref, listAll, getDownloadURL} from "firebase/storage";
 // import {db} from "../../firebase";
-import Mountains from "../../DesignAssets/images/Mountains.png";
+import mountain2 from "../../DesignAssets/images/mountain2.png";
 import "./Posters.css";
 import "../../DesignAssets/fonts/Poppins-Regular.ttf";
 import "../../DesignAssets/fonts/RobotoFlex-Regular.ttf";
@@ -13,6 +13,7 @@ import {
   getDocs,
   query,
   onSnapshot,
+  orderBy,
 } from "firebase/firestore";
 import {Link} from "react-router-dom";
 
@@ -24,9 +25,13 @@ function Posters() {
   useEffect(() => {
     const fetchData = async () => {
       //creates a reference to the poster collection in firebase
-      const posterDoc = collection(db, "Posters");
+      const posterDoc = collection(db, "posters");
+      // New ordered query
+      // const orderedQuery = query(posterDoc, orderBy("url"));
+      const orderedQuery = query(posterDoc, orderBy("title"));
+
       //using getDocs to get a snapshot of the poster collection/ get all the documents in the collection
-      const snapshot = await getDocs(posterDoc);
+      const snapshot = await getDocs(orderedQuery);
 
       //map through the snapshot and return the url, title and price of each document
       const posterField = snapshot.docs.map((doc) => {
@@ -35,8 +40,8 @@ function Posters() {
         return {
           id: doc.id,
           url: docData.url,
-          title: docData.Title,
-          price: docData.Price,
+          title: docData.title,
+          price: docData.price,
         };
       });
       setPosters(posterField);
@@ -48,39 +53,42 @@ function Posters() {
 
   return (
     <div className="posters">
-      <div className="posters__quote">
+      <section className="posters__quote">
         <div className="container">
-          <div className="container__left">
-            <h1>All Posters & Wall Art</h1>
+          <div className="container__left__position">
+            <h1>All Posters & Wall Art Decor</h1>
             <p>
-              Browse our full collection of posters and art prints, ranging from
-              elaborate infographics to breathtaking scenery
+              Don't buy art, buy a statement. show off our aesthetic brilliance,
+              and let your space tell your story
             </p>
-            <p>
-              Take the world with you wherever you go. Give your friend the
-              world with out ner world feature poster
-            </p>
+            <p>Browse our full collection of posters and wall Decor!</p>
           </div>
-          <div className="container__right ias">
-            <img src={Mountains} alt="frosty forest" />
+          <div className="container__right__position">
+            <img
+              className="mountain__img"
+              src={mountain2}
+              alt="frosty forest"
+            />{" "}
           </div>
         </div>
-      </div>
+      </section>
 
-      <div className="poster__gallery">
-        {posters.map((posterField) => {
-          return (
-            <Link to={`/posterinfo/${posterField.id}`}>
-              <Product
-                key={posterField.id}
-                image={posterField.url}
-                title={posterField.title}
-                price={posterField.price}
-              />
-            </Link>
-          );
-        })}
-      </div>
+      <section className="poster__gallery">
+        <div className="container__gallery">
+          {posters.map((posterField) => {
+            return (
+              <Link to={`/posterinfo/${posterField.id}`}>
+                <Product
+                  key={posterField.id}
+                  image={posterField.url}
+                  title={posterField.title}
+                  price={posterField.price}
+                />
+              </Link>
+            );
+          })}
+        </div>
+      </section>
     </div>
   );
 }

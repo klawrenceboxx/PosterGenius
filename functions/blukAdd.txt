@@ -1,0 +1,80 @@
+// const admin = require("firebase-admin");
+// const {Storage} = require("@google-cloud/storage");
+// require("dotenv").config({path: "../.env"});
+
+// const serviceAccount = {
+//   project_id: process.env.FIREBASE_PROJECT_ID,
+//   private_key: process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, "\n"),
+//   client_email: process.env.FIREBASE_CLIENT_EMAIL,
+// };
+
+// admin.initializeApp({
+//   credential: admin.credential.cert(serviceAccount),
+// });
+
+// const db = admin.firestore();
+// const storage = new Storage({
+//   projectId: process.env.FIREBASE_PROJECT_ID,
+//   credentials: serviceAccount,
+// });
+
+// const bucketName = "gs://postergenius-14856.appspot.com"; // Replace with your bucket name
+
+// // ... [other imports and setups]
+
+// const addDocuments = async () => {
+//   const collectionRef = db.collection("posters");
+//   const [files] = await storage
+//     .bucket(bucketName)
+//     .getFiles({prefix: "images_posters/"});
+
+//   for (const file of files) {
+//     // Ensure it's a file and not a directory
+//     if (file.name && file.name !== "images_posters/") {
+//       // Generate the signed URL
+//       const [signedUrl] = await file.getSignedUrl({
+//         action: "read",
+//         expires: "03-17-2025", // This is an example. Set the expiration as needed.
+//       });
+
+//       const existingDocs = await collectionRef
+//         .where("url", "==", signedUrl)
+//         .get();
+
+//       if (existingDocs.empty) {
+//         // Check if document with this ID doesn't exist
+//         await collectionRef.add({
+//           description: "Sample Description",
+//           imageUpload: admin.firestore.Timestamp.now(),
+//           inventoryStatus: true,
+//           price: 1,
+//           title: "Sample Title",
+//           galleryImages: [signedUrl],
+//           url: signedUrl,
+//         });
+
+//         console.log(`Document for ${file.name} added`);
+//       } else {
+//         console.log(`Document for ${file.name} already exists. Skipping.`);
+//       }
+//     }
+//   }
+// };
+
+// // ... [rest of your code]
+
+// addDocuments()
+//   .then(() => {
+//     console.log("All documents added");
+//   })
+//   .catch((error) => {
+//     console.error("Error adding documents:", error);
+//   });
+
+// uncomment to use
+
+//   node bulkAdd.js
+
+// dependencies
+// npm install @google-cloud/storage
+// npm install firebase-admin

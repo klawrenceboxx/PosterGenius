@@ -1,25 +1,55 @@
-.container__right img {
-  width: 560px;
-}
-
 .poster {
   margin-bottom: 200px;
 }
 
 .posters__quote {
-  padding-top: 8rem;
+  padding-top: 4rem;
   padding-bottom: 4rem;
   background: #b882ff;
   /* background: linear-gradient(90deg, #b882ff 0%, #ff9e7d 100%); */
   border-bottom: 1px solid #0000002b;
 }
 
+.mountain__img {
+  width: 80%;
+  max-width: 700px;
+  object-fit: cover;
+  border-radius: 2px;
+  box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.2);
+  /* border: 1px solid #000; */
+}
+
 .poster__gallery {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  padding: 80px 208px;
-  gap: 60px;
+  padding: 80px 20px;
 
+  /* border: 1px solid #000; */
+}
+
+.container__right__position {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 59%;
+  /* border: 1px solid #000; */
+}
+
+.container__left__position {
+  padding: 0 2rem;
+  /* border: 1px solid #000; */
+  width: 41%;
+  /* border: 1px solid #000; */
+}
+
+.container__gallery {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2em;
+  margin: 0 auto;
+  max-width: 1000px;
   /* border: 1px solid #000; */
 }

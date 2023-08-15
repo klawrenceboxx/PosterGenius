@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import "./Homepage2.css";
 import Lion from "../../DesignAssets/images/Lion.png";
 import FlowerBird from "../../DesignAssets/images/FlowerBird.png";
@@ -19,14 +20,14 @@ function Homepage2() {
       <section className="hero">
         <div className="container">
           <div className="container__left">
-            <h1>Featured AI-Generated and boogers Posters</h1>
+            <h1>Photorealistic AI-Generated Wall Art</h1>
             <p>
-              Dive into the amazing Marvel Cinematic Unviers with art work
-              generated throughout the mutliverse
+              How to Impress Your Guests with Unique Decor in As Little As 48
+              Hours... even if you have zero design skills!
             </p>
-            <a href="" className="btn">
-              Browse our favorites
-            </a>
+            <Link to="Posters/">
+              <h6 className="btn">Browse our favorites</h6>
+            </Link>
           </div>
           <div className="container__right">
             <img src={Butterfly} alt="" />
@@ -49,12 +50,12 @@ function Homepage2() {
         <div className="preview__container">
           <h1>A FEW OF OUR FAVOURITES</h1>
           <div className="poster__gallery preview__gallery">
-            <img src={Fox} alt="" />
-            <img src={Sunflower} alt="" />
-            <img src={doves} alt="" />
-            <img src={Dog} alt="" />
-            <img src={BlueButterfly} alt="" />
-            <img src={Cat} alt="" />
+            <img className="homepage__img" src={Fox} alt="" />
+            <img className="homepage__img" src={Sunflower} alt="" />
+            <img className="homepage__img" src={doves} alt="" />
+            <img className="homepage__img" src={Dog} alt="" />
+            <img className="homepage__img" src={BlueButterfly} alt="" />
+            <img className="homepage__img" src={Cat} alt="" />
           </div>
         </div>
       </section>
@@ -69,14 +70,16 @@ function Homepage2() {
             <div></div>
           </div>
           <div className="container__right">
-            <h1>Popular Categories</h1>
+            <h1>Bring Nature to Your Living Room</h1>
             <p>
-              Step into the action by following Goky and the Z Fighters as they
-              journey through the Tournament of Power
+              Discover art that perfectly blends high-quality materials and
+              artistic brilliance to tell your story
             </p>
-            <a href="" className="btn">
-              Shop Anime Now
-            </a>
+            <Link to="Posters/">
+              <h6 href="" className="btn">
+                Shop Posters Now
+              </h6>
+            </Link>
           </div>
         </div>
       </section>
@@ -86,12 +89,12 @@ function Homepage2() {
           <div className="container__left">
             <h1>Featured Poster of the Month</h1>
             <p>
-              Conquer the day or be scatter to ashes amongst the many who dare
-              to stand in the way of the conqueror
+              Leave your friends and family in awe... with this limited edition
+              poster only available for a limited time! Get it before it's gone!
             </p>
-            <a href="" className="btn">
-              Browse our favorites
-            </a>
+            <Link to="Posters/">
+              <h6 className="btn">See What's New!</h6>
+            </Link>
           </div>
           <div className="container__right">
             <img src={Peacock} alt="" />

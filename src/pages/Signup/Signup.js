@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import {db} from "../../firebase";
 import Logo from "../../DesignAssets/images/PosterGeniusV2.png"; //the ../ is to go back one folder
 import {auth} from "../../firebase";
 import {Link, useNavigate} from "react-router-dom";
@@ -7,10 +8,11 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
+import {setDoc, doc, collection, getDocs} from "firebase/firestore";
 
 function Signup() {
   const navigate = useNavigate();
-  const [Name, setName] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
@@ -27,6 +29,19 @@ function Signup() {
       .then((auth) => {
         // it successfully created a new user with email and password
         if (auth) {
+          setDoc(doc(db, "users", auth.user.uid), {
+            uid: auth.user.uid,
+            name: name,
+            email: email,
+            phoneNumber: "",
+            address: "",
+            city: "",
+            province: "",
+            PostalCode: "",
+            country: "",
+            profilePicture: "",
+          });
+
           navigate("/");
         }
       })
@@ -39,31 +54,39 @@ function Signup() {
         <img src={Logo} alt="PosterGenius-V2" className="login__img" />
         <div className="login__form">
           <h2 className="login__header">Create your account</h2>
+          {/* if error is a truthy - && says render the following code */}
+          {/* Add this line */}
           <form>
             <input
               type="text"
-              placeholder="Enter your Name"
+              placeholder="First Name"
               className="login__input"
               onChange={(e) => setName(e.target.value)}
             />
             <input
               type="text"
-              placeholder="Enter your Email"
+              placeholder="Email"
               className="login__input"
               onChange={(e) => setEmail(e.target.value)}
             />
             <input
               type="password"
-              placeholder="Enter your Password"
-              className="login__input"
+              placeholder="Password"
+              // always apply login_input, but check if the value of error is true, if it is, then apply input-error, else apply nothing (denoted by empty string)
+              className={`login__input ${
+                error === "Passwords do not match" ? "input-error" : ""
+              }`}
               onChange={(e) => setPassword(e.target.value)}
             />
             <input
               type="password"
-              placeholder="Enter your Password again"
-              className="login__input"
+              placeholder="Password confirmation"
+              className={`login__input ${
+                error === "Passwords do not match" ? "input-error" : ""
+              }`}
               onChange={(e) => setPasswordConfirm(e.target.value)}
             />
+            {error && <p className="error-message">{error}</p>}{" "}
             <button type="submit" onClick={register} className="login__button">
               Continue
             </button>

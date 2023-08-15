@@ -1,0 +1,17 @@
+.checkout__buttons {
+  margin: 0.5rem;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  padding: 1em 2em;
+  color: #ffffff;
+  background: linear-gradient(90deg, #b882ff 0%, #8e35ff 100%);
+  border: none;
+  border-radius: 100px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.checkout__buttons h6 {
+  color: #ffffff;
+}

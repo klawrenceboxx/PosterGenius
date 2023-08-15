@@ -1,5 +1,7 @@
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import React from "react";
+import {auth} from "../firebase";
+import {useEffect} from "react";
 
 import "./App.css";
 import Header from "../components/Header/Header";
@@ -25,6 +27,31 @@ const promise = loadStripe(
 );
 
 function App() {
+  const [{}, dispatch] = useStateValue();
+
+  useEffect(() => {
+    // will only run once when the app component loads...
+
+    auth.onAuthStateChanged((authUser) => {
+      console.log("THE USER IS >>> ", authUser);
+
+      if (authUser) {
+        // the user just logged in / the user was logged in
+
+        dispatch({
+          type: "SET_USER",
+          user: authUser,
+        });
+      } else {
+        // the user is logged out
+        dispatch({
+          type: "SET_USER",
+          user: null,
+        });
+      }
+    });
+  }, []);
+
   return (
     <Router>
       <div className="app">
@@ -36,6 +63,7 @@ function App() {
                 <>
                   <Header />
                   <Homepage2 />
+                  <Footer />
                 </>
               }
             />
@@ -45,6 +73,7 @@ function App() {
                 <>
                   <Header />
                   <Posters />
+                  <Footer />
                 </>
               }
             />
@@ -54,6 +83,7 @@ function App() {
                 <>
                   <Header />
                   <PosterInfo />
+                  <Footer />
                 </>
               }
             />
@@ -87,6 +117,7 @@ function App() {
                 <>
                   <Header />
                   <Checkout />
+                  <Footer />
                 </>
               }
             />
@@ -96,6 +127,7 @@ function App() {
                 <Elements stripe={promise}>
                   <Header />
                   <Payment />
+                  <Footer />
                 </Elements>
               }
             />
@@ -104,9 +136,6 @@ function App() {
             {/* <Route path="/payment" element={<Payment />} /> */}
           </Routes>
         </main>
-        <div>
-          <Footer />
-        </div>
       </div>
     </Router>
   );

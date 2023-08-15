@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from "react";
 import {auth} from "../../firebase";
 import {Link} from "react-router-dom";
+import {doc, getDoc} from "firebase/firestore";
+import {db} from "../../firebase";
 import {useStateValue} from "../StateProvider";
 import "./Header.css";
 import Logo from "../../DesignAssets/images/PosterGeniusV2.png"; //the ../ is to go back one folder
@@ -12,6 +14,37 @@ import "../../DesignAssets/fonts/Poppins-Regular.ttf";
 
 function Header() {
   const [{basket, user}, dispatch] = useStateValue(); //useState is a hook, the [] is the initial value
+  const [userName, setUserName] = useState("");
+
+  useEffect(() => {
+    if (user) {
+      const fetchUserName = async () => {
+        const userDoc = await getDoc(doc(db, "users", user.uid));
+        // console.log("Fetched user document:", userDoc.data());
+        // console.log("Current user UID:", user.uid);
+        // if (userDoc && userDoc.exists) {
+        //   console.log("Fetched user document:", userDoc.data());
+        // } else {
+        //   console.log("No document found for user:", user.uid);
+        // }
+
+        // if (userDoc.exists()) {
+        //   setUserName(userDoc.data().name);
+        // }
+        if (userDoc.exists()) {
+          console.log("Fetched user documentsss:", userDoc.data());
+          console.log("Fetched user name:", userDoc.data().name);
+          setUserName(userDoc.data().name);
+        } else {
+          console.log("No document found for user UID:", user.uid);
+        }
+      };
+      fetchUserName();
+    } else {
+      setUserName("");
+    }
+    console.log("user is", userName);
+  }, [user]);
 
   const handleAuthenticaton = () => {
     if (user) {
@@ -60,17 +93,21 @@ function Header() {
         </form>
 
         <div className="nav__list">
-          <div className="login">
+          <div>
             <Link to={!user && "/login2"}>
+              <button onClick={handleAuthenticaton} className="login">
+                {user ? `${userName} ` : "Guest "}
+                {user ? "Sign Out" : "Sign In"}
+              </button>
               {/* <Link to="/login"> */}
-              <div onClick={handleAuthenticaton}>
+              {/* <div onClick={handleAuthenticaton}>
                 <span className="header__optionLineOne">
-                  Hello{!user ? ", " : user.email}
+                  {user ? `Hello ${userName}` : "Guest "}
                 </span>
                 <span className="header__optionLineTwo">
-                  {user ? user.email : "sign In"}
+                  {user ? "Sign Out" : "Sign In"}
                 </span>
-              </div>
+              </div> */}
             </Link>
           </div>
           <div className="cart" className="nav__item">
