@@ -1,5 +1,8 @@
 //import react and usestate
 import React, {useEffect, useState} from "react";
+import {db} from "../../firebase";
+import {doc, setDoc} from "firebase/firestore";
+
 import "./Payment.css";
 import {useStateValue} from "../../components/StateProvider";
 import CheckoutProduct from "../../components/CheckoutProduct/CheckoutProduct";
@@ -10,7 +13,9 @@ import {getBasketTotal} from "../../components/reducer";
 import axios from "../../components/axios";
 
 function Payment() {
-  const [{basket}, dispatch] = useStateValue();
+  const [{basket, user}, dispatch] = useStateValue();
+
+  console.log("User UID:", user?.uid); // This line logs the user's UID
 
   const stripe = useStripe();
   const elements = useElements();
@@ -22,6 +27,22 @@ function Payment() {
   const [disabled, setDisabled] = useState(true);
   // clientSecret is how stripe knows how much to charge the customer. should be a sting that contains the secret key that we generated in the backend
   const [clientSecret, setClientSecret] = useState("");
+
+  // form inputs
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [streetAddress, setStreetAddress] = useState("");
+  const [country, setCountry] = useState("");
+  const [postalCode, setPostalCode] = useState("");
+  const [province, setProvince] = useState("");
+  const [city, setCity] = useState("");
+
+  // Form input state management
+  const handleInputChange = (setState) => (event) => {
+    setState(event.target.value);
+  };
 
   useEffect(() => {
     // this useEffect will only run when the basket changes
@@ -81,6 +102,29 @@ function Payment() {
       setError(`Payment failed: ${error.message}`);
       setProcessing(false);
     }
+
+    // Firestore update logic
+    const userDocRef = doc(db, "users", user.uid);
+    console.log("User doc ref:", userDocRef);
+
+    try {
+      await setDoc(
+        userDocRef,
+        {
+          postalCode: postalCode,
+          address: streetAddress,
+          city: city,
+          country: country,
+          province: province,
+          phoneNumber: phoneNumber,
+          // ... add other fields similarly ...
+        },
+        {merge: true}
+      );
+      console.log("Document successfully updated!");
+    } catch (error) {
+      console.error("Error updating document: ", error);
+    }
   };
 
   const handleChange = (event) => {
@@ -90,7 +134,19 @@ function Payment() {
     setError(event.error ? event.error.message : "");
   };
 
-  function CustomInput({placeholder, type = "text"}) {
+  const updateAddressInFirestore = async () => {
+    try {
+      const userDocRef = db.collection("users").doc(user.uid);
+      await userDocRef.update({
+        address: streetAddress,
+      });
+      console.log("Address updated successfully!");
+    } catch (error) {
+      console.error("Error updating address: ", error);
+    }
+  };
+
+  function CustomInput({placeholder, type = "text", value, onChange}) {
     const inputStyles = {
       height: "64px",
       borderRadius: "5px",
@@ -99,7 +155,15 @@ function Payment() {
       border: "1px solid gainsboro",
     };
 
-    return <input placeholder={placeholder} type={type} style={inputStyles} />;
+    return (
+      <input
+        placeholder={placeholder}
+        type={type}
+        style={inputStyles}
+        value={value}
+        onChange={onChange}
+      />
+    );
   }
 
   return (
@@ -109,15 +173,34 @@ function Payment() {
           <h1 style={{margin: "0.5em 0"}}>
             Checkout (<Link to="/checkout">{basket?.length} items</Link>)
           </h1>
+          {/* jjjjjjjjjjjjjjjjjjjjjjjjjj */}
+          <button onClick={updateAddressInFirestore}>Update Address</button>
+
           <div className="payment__contact">
             <h5>1. Contact Information</h5>
             <div className="payment__input__container">
               <div className="payment__nameInput">
-                <CustomInput placeholder="First Name" />
-                <CustomInput placeholder="Last Name" />
+                <CustomInput
+                  placeholder="First Name"
+                  value={firstName}
+                  onChange={handleInputChange(setFirstName)}
+                />
+                <CustomInput
+                  placeholder="Last Name"
+                  value={lastName}
+                  onChange={handleInputChange(setLastName)}
+                />
               </div>
-              <CustomInput placeholder="Email Address" />
-              <CustomInput placeholder="Phone Number" />{" "}
+              <CustomInput
+                placeholder="Email Address"
+                value={email}
+                onChange={handleInputChange(setEmail)}
+              />
+              <CustomInput
+                placeholder="Phone Number"
+                value={phoneNumber}
+                onChange={handleInputChange(setPhoneNumber)}
+              />{" "}
             </div>
           </div>
 
@@ -125,13 +208,33 @@ function Payment() {
             <h5>2. Shipping address</h5>
             <div className="payment__input__container">
               <div className="payment__nameInput">
-                <CustomInput placeholder="Street Adress 1" />
-                <CustomInput placeholder="Country" />
+                <CustomInput
+                  placeholder="Street Adress 1"
+                  value={streetAddress}
+                  onChange={handleInputChange(setStreetAddress)}
+                />
+                <CustomInput
+                  placeholder="Country"
+                  value={country}
+                  onChange={handleInputChange(setCountry)}
+                />
               </div>
               <div className="payment__nameInput">
-                <CustomInput placeholder="Postal/Zip Code" />
-                <CustomInput placeholder="Province" />
-                <CustomInput placeholder="City" />
+                <CustomInput
+                  placeholder="Postal/Zip Code"
+                  value={postalCode}
+                  onChange={handleInputChange(setPostalCode)}
+                />
+                <CustomInput
+                  placeholder="Province"
+                  value={province}
+                  onChange={handleInputChange(setProvince)}
+                />
+                <CustomInput
+                  placeholder="City"
+                  value={city}
+                  onChange={handleInputChange(setCity)}
+                />
               </div>
             </div>
           </div>

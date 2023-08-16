@@ -37,7 +37,7 @@ function Signup() {
             address: "",
             city: "",
             province: "",
-            PostalCode: "",
+            postalCode: "",
             country: "",
             profilePicture: "",
           });
