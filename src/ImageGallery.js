@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import "./ImageGallery.css";
-import Cat from "../DesignAssets/images/Cat.png";
 
 function ImageGallery({images}) {
   // Initial image is the first one in the array

@@ -1,9 +1,9 @@
 import React from "react";
 import "./Checkout.css";
-import Subtotal from "../../components/Subtotal/Subtotal";
-import {useStateValue} from "../../components/StateProvider";
-import CheckoutProduct from "../../components/CheckoutProduct/CheckoutProduct";
-import "../../DesignAssets/fonts/Poppins-Regular.ttf";
+import Subtotal from "./Subtotal";
+import {useStateValue} from "./StateProvider";
+import CheckoutProduct from "./CheckoutProduct";
+import "./DesignAssets/fonts/Poppins-Regular.ttf";
 
 function Checkout() {
   // figure out what this below code does
@@ -37,11 +37,6 @@ function Checkout() {
                   {/* <p>Estimated Shipping</p>
                   <p>Estimated Tax</p>
                   <p>Estimated Total</p> */}
-                </div>
-                <div className="checkout__right__buttons">
-                  {/* <button>
-                    <p style={{padding: "0px"}}>PAYPAL CHECKOUT</p>
-                  </button> */}
                 </div>
               </div>
             </div>

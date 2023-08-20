@@ -1,16 +1,17 @@
 //import react and usestate
 import React, {useEffect, useState} from "react";
-import {db} from "../../firebase";
+import {db} from "./firebase";
 import {doc, setDoc} from "firebase/firestore";
 
 import "./Payment.css";
-import {useStateValue} from "../../components/StateProvider";
-import CheckoutProduct from "../../components/CheckoutProduct/CheckoutProduct";
-import {Link, useNavigate, useRouteMatch} from "react-router-dom";
+import {useStateValue} from "./StateProvider";
+import CheckoutProduct from "./CheckoutProduct";
+import {Link, useNavigate} from "react-router-dom";
 import {CardElement, useElements, useStripe} from "@stripe/react-stripe-js";
 import CurrencyFormat from "react-currency-format";
-import {getBasketTotal} from "../../components/reducer";
-import axios from "../../components/axios";
+import {getBasketTotal} from "./reducer";
+import axios from "./axios";
+import e from "cors";
 
 function Payment() {
   const [{basket, user}, dispatch] = useStateValue();
@@ -39,11 +40,6 @@ function Payment() {
   const [province, setProvince] = useState("");
   const [city, setCity] = useState("");
 
-  // Form input state management
-  const handleInputChange = (setState) => (event) => {
-    setState(event.target.value);
-  };
-
   useEffect(() => {
     // this useEffect will only run when the basket changes
     // generate the special stripe secret which allows us to charge a customer
@@ -67,37 +63,31 @@ function Payment() {
         }
       }
     };
-
     getClientSecret();
   }, [basket]);
-
   console.log("THE SECRET IS >>>", clientSecret);
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  //
+  //-------------------------------------------------------------------------------------------------------------------
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     setProcessing(true);
-
     console.log(clientSecret);
 
     try {
-      const payload = await stripe
-        .confirmCardPayment(clientSecret, {
-          payment_method: {
-            card: elements.getElement(CardElement),
-          },
-        })
-        .then(({paymentIntent}) => {
-          // paymentIntent = payment confirmation
-          setSucceeded(true);
-          setError(null);
-          setProcessing(false);
-
-          dispatch({
-            type: "EMPTY_BASKET",
-          });
-
-          navigate("/orders");
-        }); // this will prevent the user from going back to the payment page after they have submitted their payment
+      const {paymentIntent} = await stripe.confirmCardPayment(clientSecret, {
+        payment_method: {
+          card: elements.getElement(CardElement),
+        },
+      });
+      // paymentIntent = payment confirmation
+      setSucceeded(true);
+      setError(null);
+      setProcessing(false);
+      dispatch({
+        type: "EMPTY_BASKET",
+      });
+      navigate("/orders");
     } catch (error) {
       setError(`Payment failed: ${error.message}`);
       setProcessing(false);
@@ -127,6 +117,8 @@ function Payment() {
     }
   };
 
+  //
+  //-------------------------------------------------------------------------------------------------------------------
   const handleChange = (event) => {
     // Listen for changes in the CardElement
     // and display any errors as the customer types their card details
@@ -134,38 +126,29 @@ function Payment() {
     setError(event.error ? event.error.message : "");
   };
 
-  const updateAddressInFirestore = async () => {
+  //
+  //-------------------------------------------------------------------------------------------------------------------
+  const updateAddressInFirestore = async (e) => {
+    e.preventDefault();
+
     try {
-      const userDocRef = db.collection("users").doc(user.uid);
-      await userDocRef.update({
-        address: streetAddress,
-      });
+      const userDocRef = doc(db, "users", user.uid);
+      await setDoc(
+        userDocRef,
+        {
+          address: streetAddress,
+        },
+        {merge: true}
+      );
       console.log("Address updated successfully!");
+      console.log("address is", streetAddress);
     } catch (error) {
       console.error("Error updating address: ", error);
     }
   };
 
-  function CustomInput({placeholder, type = "text", value, onChange}) {
-    const inputStyles = {
-      height: "64px",
-      borderRadius: "5px",
-      margin: "1rem",
-      padding: "1rem",
-      border: "1px solid gainsboro",
-    };
-
-    return (
-      <input
-        placeholder={placeholder}
-        type={type}
-        style={inputStyles}
-        value={value}
-        onChange={onChange}
-      />
-    );
-  }
-
+  //
+  //-------------------------------------------------------------------------------------------------------------------
   return (
     <div className="payment">
       <section className="contact__info">
@@ -180,27 +163,27 @@ function Payment() {
             <h5>1. Contact Information</h5>
             <div className="payment__input__container">
               <div className="payment__nameInput">
-                <CustomInput
+                <input
+                  type="text"
                   placeholder="First Name"
-                  value={firstName}
-                  onChange={handleInputChange(setFirstName)}
+                  onChange={(e) => setFirstName(e.target.value)}
                 />
-                <CustomInput
+                <input
+                  type="text"
                   placeholder="Last Name"
-                  value={lastName}
-                  onChange={handleInputChange(setLastName)}
+                  onChange={(e) => setLastName(e.target.value)}
                 />
               </div>
-              <CustomInput
+              <input
+                type="text"
                 placeholder="Email Address"
-                value={email}
-                onChange={handleInputChange(setEmail)}
+                onChange={(e) => setEmail(e.target.value)}
               />
-              <CustomInput
+              <input
+                type="text"
                 placeholder="Phone Number"
-                value={phoneNumber}
-                onChange={handleInputChange(setPhoneNumber)}
-              />{" "}
+                onChange={(e) => setPhoneNumber(e.target.value)}
+              />
             </div>
           </div>
 
@@ -208,32 +191,37 @@ function Payment() {
             <h5>2. Shipping address</h5>
             <div className="payment__input__container">
               <div className="payment__nameInput">
-                <CustomInput
-                  placeholder="Street Adress 1"
-                  value={streetAddress}
-                  onChange={handleInputChange(setStreetAddress)}
+                <input
+                  type="text"
+                  placeholder="Street Address 1"
+                  onChange={(e) => setStreetAddress(e.target.value)}
                 />
-                <CustomInput
+                <input
+                  type="text"
+                  placeholder="address"
+                  onChange={(e) => setStreetAddress(e.target.value)}
+                />
+                <input
+                  type="text"
                   placeholder="Country"
-                  value={country}
-                  onChange={handleInputChange(setCountry)}
+                  onChange={(e) => setCountry(e.target.value)}
                 />
               </div>
               <div className="payment__nameInput">
-                <CustomInput
+                <input
+                  type="text"
                   placeholder="Postal/Zip Code"
-                  value={postalCode}
-                  onChange={handleInputChange(setPostalCode)}
+                  onChange={(e) => setPostalCode(e.target.value)}
                 />
-                <CustomInput
+                <input
+                  type="text"
                   placeholder="Province"
-                  value={province}
-                  onChange={handleInputChange(setProvince)}
+                  onChange={(e) => setProvince(e.target.value)}
                 />
-                <CustomInput
+                <input
+                  type="text"
                   placeholder="City"
-                  value={city}
-                  onChange={handleInputChange(setCity)}
+                  onChange={(e) => setCity(e.target.value)}
                 />
               </div>
             </div>

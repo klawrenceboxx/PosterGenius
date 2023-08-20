@@ -2,8 +2,8 @@ import React from "react";
 import {Link} from "react-router-dom";
 
 import "./Footer.css";
-import "../../DesignAssets/fonts/Poppins-Regular.ttf";
-import Logo from "../../DesignAssets/images/PosterGeniusV2.png";
+import "./DesignAssets/fonts/Poppins-Regular.ttf";
+import Logo from "./DesignAssets/images/PosterGeniusV2.png";
 
 function Footer() {
   return (

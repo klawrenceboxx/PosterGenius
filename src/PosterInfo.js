@@ -1,16 +1,15 @@
 import React from "react";
 import {useNavigate} from "react-router-dom";
 import "./PosterInfo.css";
-import dog from "../../DesignAssets/images_posters/dog.png";
-import "../../DesignAssets/fonts/Poppins-Regular.ttf";
+import "./DesignAssets/fonts/Poppins-Regular.ttf";
 import {useParams} from "react-router-dom";
 import {getDoc, doc, onSnapshot} from "firebase/firestore";
-import {db} from "../../firebase";
+import {db} from "./firebase";
 import {useState, useEffect, useMemo} from "react";
-import {useStateValue} from "../../components/StateProvider";
+import {useStateValue} from "./StateProvider";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";
-import ImageGallery from "../../components/ImageGallery";
+import ImageGallery from "./ImageGallery";
 import {collection, getDocs} from "firebase/firestore";
 
 const orientations = [

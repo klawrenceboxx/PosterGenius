@@ -88,7 +88,7 @@ nav {
 .search__input {
   height: 3.5rem;
   width: 100%;
-  background-image: url("../../DesignAssets/images/Search.png");
+  background-image: url("./DesignAssets/images/Search.png");
   background-repeat: no-repeat;
   background-position: right 2em center;
   background-size: 1.5rem;

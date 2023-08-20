@@ -1,26 +1,19 @@
 import React, {useState, useEffect} from "react";
-import {storage, db} from "../../firebase";
-import {ref, listAll, getDownloadURL} from "firebase/storage";
+import {storage, db} from "./firebase";
+import {ref} from "firebase/storage";
 // import {db} from "../../firebase";
-import mountain2 from "../../DesignAssets/images/mountain2.png";
+import mountain2 from "./DesignAssets/images/mountain2.png";
 import "./Posters.css";
-import "../../DesignAssets/fonts/Poppins-Regular.ttf";
-import "../../DesignAssets/fonts/RobotoFlex-Regular.ttf";
-import Product from "../../components/Product/Product";
-import {
-  getFirestore,
-  collection,
-  getDocs,
-  query,
-  onSnapshot,
-  orderBy,
-} from "firebase/firestore";
+import "./DesignAssets/fonts/Poppins-Regular.ttf";
+import "./DesignAssets/fonts/RobotoFlex-Regular.ttf";
+import Product from "./Product";
+import {collection, getDocs, query, orderBy} from "firebase/firestore";
 import {Link} from "react-router-dom";
 
 function Posters() {
   const [posters, setPosters] = useState([]);
 
-  const imageListRef = ref(storage, "images/");
+  // const imageListRef = ref(storage, "images/");
 
   useEffect(() => {
     const fetchData = async () => {

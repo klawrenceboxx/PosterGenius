@@ -1,9 +1,6 @@
 import React from "react";
 import "./Product.css";
-import Heart from "../../DesignAssets/images/Heart.png";
-import {v4 as uuidv4} from "uuid";
-import {useStateValue} from "../StateProvider";
-import {keyboard} from "@testing-library/user-event/dist/keyboard";
+import {useStateValue} from "./StateProvider";
 
 function Product({id, title, image, price}) {
   const [{basket}, dispatch] = useStateValue();

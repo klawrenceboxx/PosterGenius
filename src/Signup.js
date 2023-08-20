@@ -1,14 +1,10 @@
 import React, {useState} from "react";
-import {db} from "../../firebase";
-import Logo from "../../DesignAssets/images/PosterGeniusV2.png"; //the ../ is to go back one folder
-import {auth} from "../../firebase";
+import {db} from "./firebase";
+import Logo from "./DesignAssets/images/PosterGeniusV2.png"; //the ../ is to go back one folder
+import {auth} from "./firebase";
 import {Link, useNavigate} from "react-router-dom";
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
-import {setDoc, doc, collection, getDocs} from "firebase/firestore";
+import {createUserWithEmailAndPassword} from "firebase/auth";
+import {setDoc, doc} from "firebase/firestore";
 
 function Signup() {
   const navigate = useNavigate();
