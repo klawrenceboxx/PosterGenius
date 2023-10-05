@@ -12,6 +12,38 @@
   cursor: pointer;
 }
 
+.discount {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: flex-start;
+  margin: 0.5rem;
+  margin-top: 2rem;
+  padding: 1em 1em;
+  gap: 1rem;
+  width: 100%;
+}
+
+.discount p {
+  font-size: 1.3rem;
+  /* color: #8e35ff; */
+  font-weight: 500;
+}
+
+.discount input {
+  height: 48px;
+  border-radius: 5px;
+  padding: 1rem;
+  border: 1px solid gainsboro;
+}
+
+.discount input:focus,
+input:hover {
+  outline: none;
+  /* give the input a shadow on focus only on the bottom and right make it subtle*/
+  box-shadow: 1px 1px 4px 0.5px rgba(0, 0, 0, 0.1);
+}
+
 .checkout__buttons h6 {
   color: #ffffff;
 }

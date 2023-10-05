@@ -11,7 +11,6 @@ import {CardElement, useElements, useStripe} from "@stripe/react-stripe-js";
 import CurrencyFormat from "react-currency-format";
 import {getBasketTotal} from "./reducer";
 import axios from "./axios";
-import e from "cors";
 
 function Payment() {
   const [{basket, user}, dispatch] = useStateValue();

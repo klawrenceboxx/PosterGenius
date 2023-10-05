@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import "./Subtotal.css";
 import CurrencyFormat from "react-currency-format";
 import {useStateValue} from "./StateProvider";
@@ -8,6 +8,7 @@ import {useNavigate} from "react-router-dom";
 function Subtotal() {
   const navigate = useNavigate();
   const [{basket}, dispatch] = useStateValue();
+  const [discount, setDiscount] = useState(0);
 
   return (
     <div className="subtotal">
@@ -18,7 +19,7 @@ function Subtotal() {
           // the value is the subtotal of the basket
           <>
             <p>
-              Subtotal ({basket.length} items): <strong>{value}</strong>
+              Order total: ({basket.length} items): <strong>{value}</strong>
             </p>
             <small className="subtotal__gift">
               <input type="checkbox" /> This order contains a gift
@@ -32,6 +33,14 @@ function Subtotal() {
         thousandSeparator={true}
         prefix={"$"}
       />
+      <div className="discount">
+        <p>Discount code:</p>
+        <input
+          type="text"
+          placeholder=""
+          onChange={(e) => setDiscount(e.target.value)}
+        />
+      </div>
       <button
         className="checkout__buttons"
         onClick={(e) => navigate("/payment")}

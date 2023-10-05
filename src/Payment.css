@@ -32,6 +32,13 @@
   border: 1px solid gainsboro;
 }
 
+.payment__input__container input:focus,
+input:hover {
+  outline: none;
+  /* give the input a shadow on focus only on the bottom and right make it subtle*/
+  box-shadow: 1px 1px 0px 0px rgba(0, 0, 0, 0.1);
+}
+
 .payment__nameInput {
   display: flex;
   width: 100%;

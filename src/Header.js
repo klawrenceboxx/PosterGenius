@@ -61,7 +61,7 @@ function Header() {
             <Link to="/posters">Posters</Link>
           </li>
           <li className="nav__item">
-            <Link to="/posterInfo/:id">PosterInfo</Link>
+            <Link to="/posterInfo/:id">Digitallll</Link>
           </li>
         </ul>
 

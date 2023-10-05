@@ -46,6 +46,7 @@ function Signup() {
 
   return (
     <>
+      hello world
       <div className="login__container">
         <img src={Logo} alt="PosterGenius-V2" className="login__img" />
         <div className="login__form">
