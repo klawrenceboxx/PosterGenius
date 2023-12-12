@@ -32,7 +32,7 @@ function Header() {
     } else {
       setUserName("");
     }
-    console.log("user is", userName);
+    // console.log("user is", userName);
   }, [user, userName]);
 
   const handleAuthenticaton = () => {

@@ -22,7 +22,7 @@ app.post("/payments/create", async (request, response) => {
   try {
     const paymentIntent = await stripe.paymentIntents.create({
       amount: total,
-      currency: "usd",
+      currency: "cad",
     });
 
     console.log("Payment Intent:", paymentIntent);

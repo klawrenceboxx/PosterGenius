@@ -70,9 +70,9 @@ function Posters() {
         <div className="container__gallery">
           {posters.map((posterField) => {
             return (
-              <Link to={`/posterinfo/${posterField.id}`}>
+              <Link to={`/posterinfo/${posterField.id}`} key={posterField.id}>
                 <Product
-                  key={posterField.id}
+                  id={posterField.id}
                   image={posterField.url}
                   title={posterField.title}
                   price={posterField.price}

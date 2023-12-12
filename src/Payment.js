@@ -63,8 +63,9 @@ function Payment() {
       }
     };
     getClientSecret();
+    console.log("Basket Total:", getBasketTotal(basket));
   }, [basket]);
-  console.log("THE SECRET IS >>>", clientSecret);
+  // console.log("THE SECRET IS >>>", clientSecret);
 
   //
   //-------------------------------------------------------------------------------------------------------------------
@@ -264,6 +265,7 @@ function Payment() {
             <div className="payment__items">
               {basket.map((item) => (
                 <CheckoutProduct
+                  key={item.id}
                   id={item.id}
                   title={item.title}
                   image={item.image}

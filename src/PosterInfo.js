@@ -33,6 +33,7 @@ const materials = [
 function PosterInfo() {
   const navigate = useNavigate();
   const {id} = useParams();
+  // console.log("id:", id);
   const [data, setData] = useState(null); // Initialize a state variable to store the document data
   const [{basket}, dispatch] = useStateValue();
   const [activeTab, setActiveTab] = useState("productDetails");
@@ -178,13 +179,16 @@ function PosterInfo() {
     dispatch({
       type: "ADD_TO_BASKET",
       item: {
-        id: data.id,
+        id: id,
         title: data.title,
         image: data.url,
         price: totalPrice,
       },
     });
   };
+
+  // console.log("data:", data); // Log the entire data object
+  // console.log("data.id:", id); // Log just the id field of data
 
   const element = <FontAwesomeIcon icon={faArrowLeft} />;
   const galleryImages = data.galleryImages.map((url, index) => ({
