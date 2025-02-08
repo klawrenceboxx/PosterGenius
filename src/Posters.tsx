@@ -9,6 +9,7 @@ import "./DesignAssets/fonts/RobotoFlex-Regular.ttf";
 import Product from "./Product";
 import {collection, getDocs, query, orderBy} from "firebase/firestore";
 import {Link} from "react-router-dom";
+import {LazyLoadImage} from "react-lazy-load-image-component";
 
 function Posters() {
   const [posters, setPosters] = useState([]);
@@ -61,6 +62,7 @@ function Posters() {
               className="mountain__img"
               src={mountain2}
               alt="frosty forest"
+              loading="lazy"
             />{" "}
           </div>
         </div>

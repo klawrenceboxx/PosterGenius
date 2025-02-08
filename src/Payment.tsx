@@ -10,7 +10,7 @@ import {Link, useNavigate} from "react-router-dom";
 import {CardElement, useElements, useStripe} from "@stripe/react-stripe-js";
 import CurrencyFormat from "react-currency-format";
 import {getBasketTotal} from "./reducer";
-import axios from "./axios";
+import axios from "./services/axios";
 
 function Payment() {
   const [{basket, user}, dispatch] = useStateValue();
